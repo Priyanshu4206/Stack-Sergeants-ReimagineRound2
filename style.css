@@ -15,6 +15,69 @@ body {
   color: whitesmoke;
 }
 
+.loader {
+  position: fixed;
+  left: 0;
+  z-index: 999;
+  top: 0;
+  background: whitesmoke;
+  color: #000;
+  width: 100%;
+  height: 100vh;
+  animation: backgroundChange .5s linear 3s forwards;
+}
+
+.load-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 10vmax;
+  width: fit-content;
+  display: flex;
+  animation: colorChange .5s linear 3s forwards;
+}
+
+.loaded-text {
+  transform: scale(1.5);
+  animation: scaleText .5s linear .5s forwards;
+}
+
+.loading-text {
+  width: 0;
+  overflow: hidden;
+  animation: expand 1s linear 1.5s forwards;
+  white-space: nowrap;
+}
+
+@keyframes scaleText {
+  from {transform: scale(1.5)}
+  to {transform: scale(1)}
+}
+
+@keyframes expand {
+  from {width: 0;}
+  to {width: 50vmax;}
+}
+
+@keyframes backgroundChange {
+  from {background-color: whitesmoke}
+  to {background-color: black}
+}
+
+@keyframes colorChange {
+  from {color: black}
+  to {color: white}
+}
+
+@keyframes fadeOut {
+  from {opacity: 1}
+  to {
+    opacity: 0; 
+    z-index: -1;
+  }
+}
+
 .header-small-screen {
   position: fixed;
   z-index: 10;
@@ -304,6 +367,7 @@ body {
 
 #landing-section .boxes {
   position: absolute;
+  top: 100%;
   width: 100%;
   height: 100%;
   display: flex;

@@ -29,6 +29,20 @@ ScrollTrigger.scrollerProxy('#main', {
 ScrollTrigger.addEventListener('refresh', () => locoScroll.update())
 ScrollTrigger.refresh()
 
+function loaderAnimation() {
+  gsap.to('.loader', {
+    duration: 5,
+    y: '-100%',
+    ease: 'power4.inOut',
+    stagger: 0.2,
+    onComplete: function () {
+      landingPageAnimation()
+    },
+  })
+}
+
+loaderAnimation()
+
 function landingPageAnimation() {
   var h1 = document.querySelector('.content h1')
   var h1Text = h1.textContent
@@ -47,69 +61,66 @@ function landingPageAnimation() {
     clutter2 += `<span>${element}</span>`
   })
   h2.innerHTML = clutter2
-  window.addEventListener('load', () => {
-    const tl = gsap.timeline()
-    tl.fromTo(
-      '#landing-section .boxes .box',
-      { y: '100%' },
-      {
-        y: '-100%',
-        duration: 2,
-        stagger: {
-          each: 0.1,
-          from: 'random',
-          grid: 'auto',
-        },
-        ease: 'power2.out',
-      }
-    )
-    tl.fromTo(
-      '#landing-section .content h1 span',
-      {
-        y: '20%',
-        duration: 0.2,
-        opacity: 0,
-        stagger: 0.1,
-      },
-      {
-        opacity: 1,
-        y: '0%',
-        duration: 0.2,
-        stagger: 0.1,
-      }
-    )
-    tl.fromTo(
-      '#landing-section .content h2 span',
-      {
-        y: '-20%',
-        opacity: 0,
-        duration: 0.2,
-        stagger: -0.15,
-      },
-      {
-        y: '0%',
-        opacity: 1,
-        duration: 0.2,
-        stagger: -0.15,
-      },
-      '-=1.5'
-    )
 
-    tl.fromTo(
-      '#landing-section .content a',
-      {
-        opacity: 0,
+  const tl = gsap.timeline()
+  tl.fromTo(
+    '#landing-section .boxes .box',
+    { y: '100%' },
+    {
+      y: '-200%',
+      duration: 2,
+      stagger: {
+        each: 0.1,
+        from: 'random',
+        grid: 'auto',
       },
-      {
-        opacity: 2,
-        duration: 1,
-        ease: 'power2.out',
-      }
-    )
-  })
+      ease: 'power2.out',
+    }
+  )
+  tl.fromTo(
+    '#landing-section .content h1 span',
+    {
+      y: '20%',
+      duration: 0.2,
+      opacity: 0,
+      stagger: 0.1,
+    },
+    {
+      opacity: 1,
+      y: '0%',
+      duration: 0.2,
+      stagger: 0.1,
+    }
+  )
+  tl.fromTo(
+    '#landing-section .content h2 span',
+    {
+      y: '-20%',
+      opacity: 0,
+      duration: 0.2,
+      stagger: -0.15,
+    },
+    {
+      y: '0%',
+      opacity: 1,
+      duration: 0.2,
+      stagger: -0.15,
+    },
+    '-=1.5'
+  )
+
+  tl.fromTo(
+    '#landing-section .content a',
+    {
+      opacity: 0,
+    },
+    {
+      opacity: 1,
+      duration: 1,
+      ease: 'power2.out',
+    }
+  )
 }
-
-landingPageAnimation()
 
 function cursorAnimation() {
   const cur = document.getElementById('cursor')
