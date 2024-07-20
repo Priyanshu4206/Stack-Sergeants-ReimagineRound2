@@ -151,23 +151,113 @@ function cursorAnimation() {
   var button = document.querySelector('.content a')
   button.addEventListener('mouseenter', function () {
     cur.style.border = '5px solid #000'
+    cur.style.boxShadow = '0px 0px 10px 30px rgba(0, 0, 0, 0.3) inset'
   })
 
   button.addEventListener('mouseleave', function () {
     cur.style.border = '5px solid #fff'
+    cur.style.boxShadow = '0px 0px 10px 30px rgba(255, 255, 255, 0.3) inset'
+  })
+
+  var footer = document.querySelector('#footer')
+  footer.addEventListener('mouseenter', function () {
+    // cur.style.border = '10px solid #000'
+    // cur.style.boxShadow = '0px 0px 10px 30px rgba(0, 0, 0, 0.3)'
+    // cur.style.transform = scale(0)
+    cur.style.opacity = 0
+  })
+
+  footer.addEventListener('mouseleave', function () {
+    // cur.style.border = '10px solid #fff'
+    // cur.style.boxShadow = '0px 0px 10px 30px rgba(255, 255, 255, 0.3)'
+    // cur.style.transform = scale(1)
+    cur.style.opacity = 1
+  })
+
+  var navbar = document.querySelector('header')
+  navbar.addEventListener('mouseenter', function () {
+    // cur.style.border = '10px solid #000'
+    // cur.style.boxShadow = '0px 0px 10px 30px rgba(0, 0, 0, 0.3)'
+    // cur.style.transform = scale(0)
+    cur.style.opacity = 0
+  })
+
+  navbar.addEventListener('mouseleave', function () {
+    // cur.style.border = '10px solid #fff'
+    // cur.style.boxShadow = '0px 0px 10px 30px rgba(255, 255, 255, 0.3)'
+    // cur.style.transform = scale(1)
+    cur.style.opacity = 1
   })
 }
 
 cursorAnimation()
 
 function PhoneNavbar() {
-  const list = document.querySelectorAll('.list')
+  var menuToggle = document.getElementById('menuToggle')
+  var menuBar = gsap.timeline({ paused: true })
+  menuBar.to(
+    '.bar-1',
+    0.5,
+    {
+      attr: { d: 'M8,2 L2,8' },
+      x: 1,
+      ease: 'power2.easeInOut',
+    },
+    'start'
+  )
 
-  function activeLink() {
-    list.forEach((item) => item.classList.remove('active'))
-    this.classList.add('active')
-  }
+  menuBar.to(
+    '.bar-2',
+    0.5,
+    {
+      autoAlpha: 0,
+    },
+    'start'
+  )
+  menuBar.to(
+    '.bar-3',
+    0.5,
+    {
+      attr: { d: 'M8,8 L2,2' },
+      x: 1,
+      ease: 'power2.easeInOut',
+    },
+    'start'
+  )
+  menuBar.reverse()
 
-  list.forEach((item) => item.addEventListener('click', activeLink))
+  var navTl = gsap.timeline({
+    paused: true,
+  })
+  navTl.to('.fullpage-menu', {
+    duration: 0,
+    display: 'block',
+    ease: 'Expo.easeInOut',
+  })
+
+  navTl.to('.menu-bg', {
+    duration: 1,
+    opacity: 1,
+    ease: 'Expo.easeInOut',
+  })
+
+  navTl.from(
+    '.main-menu li a',
+    {
+      duration: 1.5,
+      y: '100%',
+      rotateY: 30,
+      stagger: 0.2,
+      ease: 'Expo.easeInOut',
+    },
+    '-=0.5'
+  )
+
+  navTl.reverse()
+
+  menuToggle.addEventListener('click', function () {
+    menuBar.reversed(!menuBar.reversed())
+    navTl.reversed(!navTl.reversed())
+  })
 }
 PhoneNavbar()

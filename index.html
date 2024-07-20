@@ -12,39 +12,38 @@
 </head>
 
 <body>
-  <header class="header">
+  <header class="header-small-screen">
+    <div class="header-row">
+      <div class="brand-logo"><a href="#" class="logo">
+          <img height="30px" src="Navbar/logo.svg" alt="logo">
+        </a></div>
+      <button class="menu-toggle" id="menuToggle" type="button">
+        <svg viewBox="0 0 12 10" class="hamburger" height="40px" width="40px">
+          <path d="M10,2 L2,2" class="bar-1"></path>
+          <path d="M2,5 L10,5" class="bar-2"></path>
+          <path d="M10,8 L2,8" class="bar-3"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <section class="fullpage-menu">
+    <div class="fullpage-menu-inner">
+      <div class="menu-bg"></div>
+      <nav class="main-menu">
+        <ul>
+
+          <li><a href=""><span data-clip="Home">Home</span></a></li>
+          <li><a href=""><span data-clip="Shop">Shop</span></a></li>
+          <li><a href=""><span data-clip="Accessories">Accessories</span></a></li>
+          <li><a href=""><span data-clip="Account">Account</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+  <header class="header-big-screen">
     <a href="#" class="logo">
       <img height="30px" src="Navbar/logo.svg" alt="logo">
     </a>
-    <!-- <div class="navigation" id="menu">
-      <ul>
-        <li class="list active">
-          <a href="#">
-            <span class="text">Home</span>
-            <span class="icon"><i class="ri-home-line"></i></span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="#">
-            <span class="text">Shop</span>
-            <span class="icon"><i class="ri-store-line"></i></span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="#">
-            <span class="text">Accessories</span>
-            <span class="icon"><i class="ri-account-box-line"></i></span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="#">
-            <span class="text">Account</span>
-            <span class="icon"><i class="ri-account-box-line"></i></span>
-          </a>
-        </li>
-        <div class="indicator"></div>
-      </ul>
-    </div> -->
     <nav class="navbar">
       <a href="#landing-section">Home<span></span></a>
       <a href="#Shop-Phones">Shop Phones<span></span></a>
@@ -79,6 +78,85 @@
     </section>
     <section id="Account">
       <h1>Account</h1>
+    </section>
+    <section id="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="content">
+            <h4>MOTOROLA</h4>
+            <p>About us</p>
+            <p>MOTOROLA, the Stylized M Logo, MOTO and the MOTO family of marks are trademarks of Motorola Trademark Holdings, LLC. LENOVO is a trademark of Lenovo.</p>
+            <br>
+            <p>All other trademarks are the property of their respective owners. © 2017 Motorola Mobility LLC.</p>
+            <br>
+            <br>
+            <p>All mobile phones are designed and manufactured by Motorola Mobility LLC, a wholly owned subsidiary of Lenovo.</p>
+          </div>
+        </div>
+        <div class="footer-mid">
+          <div class="content">
+            <p>NAVIGATION</p>
+            <ul>
+              <li><a class="hover" href="#">Products<i class="ri-arrow-right-line"></i></a></li>
+              <li><a class="hover" href="#">Motorola Home<i class="ri-arrow-right-line"></i></a></li>
+              <li><a class="hover" href="#">Support<i class="ri-arrow-right-line"></i></a></li>
+              <li><a class="hover" href="#">About us<i class="ri-arrow-right-line"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="content">
+            <p>FOLLOW US</p>
+            <ul>
+              <li>
+                <a class="hover" href="https://www.instagram.com/motorolain/">
+                  <div class="footer-social-media">
+                    <div class="footer-social-media-img">
+                      <img src="/footer/instagram.svg" alt="">
+                    </div>
+                    @motorolain
+                  </div>
+                  <i class="ri-arrow-right-line"></i>
+                </a>
+              </li>
+              <li>
+                <a class="hover" href="https://www.youtube.com/channel/UCo2M-E3Xd9oIQoznNfCDGcA">
+                  <div class="footer-social-media">
+                    <div class="footer-social-media-img">
+                      <img src="/footer/youtube.svg" alt="">
+                    </div>
+                    @motorola india
+                  </div>
+                  <i class="ri-arrow-right-line"></i>
+                </a>
+              </li>
+              <li>
+                <a class="hover" href="https://x.com/motorolaindia">
+                  <div class="footer-social-media">
+                    <div class="footer-social-media-img">
+                      <img src="/footer/twitter.svg" alt="">
+                    </div>
+                    @motorola india
+                  </div>
+                  <i class="ri-arrow-right-line"></i>
+                </a>
+              </li>
+              <li>
+                <a class="hover" href="https://www.facebook.com/MotorolaIN">
+                  <div class="footer-social-media">
+                    <div class="footer-social-media-img">
+                      <img src="/footer/facebook.svg" alt="">
+                    </div>
+                    @motorola
+                  </div>
+                  <i class="ri-arrow-right-line"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          © 2024 Motorola Mobility LLC. All Rights Reserved
+        </div>
+      </div>
     </section>
   </div>
   <script type="module" src="/main.js"></script>
