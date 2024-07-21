@@ -50,34 +50,6 @@ body {
   white-space: nowrap;
 }
 
-@keyframes scaleText {
-  from {transform: scale(1.5)}
-  to {transform: scale(1)}
-}
-
-@keyframes expand {
-  from {width: 0;}
-  to {width: 50vmax;}
-}
-
-@keyframes backgroundChange {
-  from {background-color: whitesmoke}
-  to {background-color: black}
-}
-
-@keyframes colorChange {
-  from {color: black}
-  to {color: white}
-}
-
-@keyframes fadeOut {
-  from {opacity: 1}
-  to {
-    opacity: 0; 
-    z-index: -1;
-  }
-}
-
 .header-small-screen {
   position: fixed;
   z-index: 10;
@@ -158,7 +130,7 @@ body {
   overflow: hidden;
 }
 
-.fullpage-menu-inner nav li + li {
+.fullpage-menu-inner nav li+li {
   margin-top: 30px;
 }
 
@@ -225,14 +197,13 @@ body {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   z-index: -1;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   transition: 1s linear;
 }
+
 .header-big-screen:hover::before {
   left: 100%;
 }
@@ -268,32 +239,6 @@ body {
 .navbar a:hover span {
   transform: scale(1) translateY(0);
   opacity: 1;
-}
-@media screen and (max-width: 850px) {
-  .header-big-screen {
-    display: none;
-  }
-  .header-small-screen {
-    display: block;
-  }
-
-  .header-row {
-    padding: 30px;
-  }
-
-  .fullpage-menu-inner nav li a {
-    font-size: 54px;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .header-row {
-    padding: 25px;
-  }
-
-  .fullpage-menu-inner nav li a {
-    font-size: 35px;
-  }
 }
 
 #cursor {
@@ -379,63 +324,202 @@ body {
   background-color: white;
 }
 
-@media (max-width: 850px) {
-  #landing-section .content h1 {
-    font-size: 80px;
-  }
-
-  #landing-section .content h2 {
-    font-size: 50px;
-  }
-
-  #landing-section .content a {
-    font-size: 20px;
-    padding: 12px 20px;
-  }
+#features {
+  position: relative;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  gap: 1rem;
 }
 
-@media (max-width: 750px) {
-  #landing-section .content h1 {
-    font-size: 70px;
-  }
-
-  #landing-section .content h2 {
-    font-size: 45px;
-  }
-
-  #landing-section .content a {
-    font-size: 18px;
-    padding: 10px 18px;
-  }
-
-  #landing-section .boxes .box {
-    width: 25%;
-  }
+.features-box {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+  height: 100vh;
 }
 
-@media (min-aspect-ratio: 16/9) {
-  .background-clip {
-    width: 100%;
-    height: auto;
-  }
+.features-left {
+  display: flex;
+  flex: 2;
 }
 
-@media (max-aspect-ratio: 16/9) {
-  .background-clip {
-    width: auto;
-    height: 100%;
-  }
+.about-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+  flex: 1;
+  height: 100vh;
 }
 
-#Shop-Phones {
+.features-wrapper,
+.about-wrapper {
+  display: flex;
+  transition: transform 0.2s ease-in-out;
+}
+
+.features-title {
+  text-align: left;
+  margin: 0;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-start;
+  color: white;
+}
+
+
+.about-details {
+  text-align: left;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: flex-start;
+  color: white;
+}
+
+.features-title h2 {
+  font-size: 4rem;
+}
+
+.features-title p {
+  font-size: 0.75rem;
+}
+
+.buttons-container {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  margin-top: 20px;
+}
+
+button {
+  width: fit-content;
+  background-color: goldenrod;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+button:disabled {
+  background-color: rgba(100, 94, 5, 0.206);
+  cursor: not-allowed;
+}
+
+.product-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+  flex: 1;
+  height: 100vh;
+}
+
+.about-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+  width: 320px;
+  height: 100vh;
+}
+
+.featured-products-image-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-wrapper {
+  position: absolute;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-size: 4rem;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.product-wrapper img {
+  width: 90%;
+  height: 50%;
+  object-fit: contain;
+  transition: transform 1s ease;
+  /* Ensure smooth sliding effect */
+}
+
+.product-buy {
+  width: 250px;
+  padding: 1rem;
+}
+
+.about-details {
+  display: flex;
+}
+
+.about-details h3 {
+  font-size: 2rem;
+}
+
+.about-details p {
+  font-size: 0.75rem;
+}
+
+.qualities-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  gap: 1rem;
+  align-items: center;
+}
+
+.quality-item {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quality-item img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#banner {
   min-height: 100vh;
   width: 100%;
 }
-#Accessories {
-  min-height: 100vh;
-  width: 100%;
-}
-#Account {
+
+#trending {
   min-height: 100vh;
   width: 100%;
 }
@@ -521,14 +605,17 @@ body {
   color: #000;
   transition: all 0.5s ease-in-out;
 }
+
 .footer-container .footer-mid .content ul li a i {
   opacity: 0;
   padding-right: 10px;
   transition: all 0.3s ease-in-out;
 }
+
 .footer-container .footer-mid .content ul li:hover i {
   opacity: 1;
 }
+
 .footer-container .footer-mid .content ul li:hover a {
   transform: translateX(10px);
 }
@@ -600,14 +687,17 @@ body {
   color: #000;
   transition: all 0.5s ease-in-out;
 }
+
 .footer-container .footer-right .content ul li a i {
   opacity: 0;
   padding-right: 10px;
   transition: all 0.3s ease-in-out;
 }
+
 .footer-container .footer-right .content ul li:hover i {
   opacity: 1;
 }
+
 .footer-container .footer-right .content ul li:hover i {
   transform: translateX(10px);
 }
@@ -639,12 +729,48 @@ body {
   .footer-container .footer-right .content ul li {
     padding: 10px;
   }
+
   .footer-container .footer-mid .content ul li:nth-last-child(1) {
     padding: 10px;
   }
 }
 
+@media screen and (max-width: 1024px) {
+  #features {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 850px) {
+  .header-big-screen {
+    display: none;
+  }
+
+  .header-small-screen {
+    display: block;
+  }
+
+  .header-row {
+    padding: 30px;
+  }
+
+  .fullpage-menu-inner nav li a {
+    font-size: 54px;
+  }
+
+  #landing-section .content h1 {
+    font-size: 80px;
+  }
+
+  #landing-section .content h2 {
+    font-size: 50px;
+  }
+
+  #landing-section .content a {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+
   .footer-container .footer-left .content h4 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -669,16 +795,43 @@ body {
     width: 25px;
     height: 25px;
   }
+
   .footer-social-media .footer-social-media-img img {
     width: 15px;
     height: 15px;
   }
+
   .footer-container .footer-right .content ul {
     margin-bottom: -15%;
   }
 }
 
 @media (max-width: 750px) {
+  .header-row {
+    padding: 25px;
+  }
+
+  .fullpage-menu-inner nav li a {
+    font-size: 35px;
+  }
+
+  #landing-section .content h1 {
+    font-size: 70px;
+  }
+
+  #landing-section .content h2 {
+    font-size: 45px;
+  }
+
+  #landing-section .content a {
+    font-size: 18px;
+    padding: 10px 18px;
+  }
+
+  #landing-section .boxes .box {
+    width: 25%;
+  }
+
   .footer-container .footer-left .content h4 {
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
@@ -708,7 +861,74 @@ body {
     width: 10px;
     height: 10px;
   }
+
   .footer-container .footer-right .content ul {
     margin-bottom: -30%;
+  }
+}
+
+
+@media (min-aspect-ratio: 16/9) {
+  .background-clip {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-clip {
+    width: auto;
+    height: 100%;
+  }
+}
+
+@keyframes scaleText {
+  from {
+    transform: scale(1.5)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 50vmax;
+  }
+}
+
+@keyframes backgroundChange {
+  from {
+    background-color: whitesmoke
+  }
+
+  to {
+    background-color: black
+  }
+}
+
+@keyframes colorChange {
+  from {
+    color: black
+  }
+
+  to {
+    color: white
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0;
+    z-index: -1;
   }
 }
