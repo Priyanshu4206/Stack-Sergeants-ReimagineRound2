@@ -17,9 +17,16 @@
       <div class="loaded-text">H</div>
       <div class="loading-text">ello, Moto</div>
     </div>
+    <div class="boxes">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
   </div>
   <header class="header-small-screen">
-    <nav class="header-row">
+    <div class="header-row">
       <div class="brand-logo"><a href="#" class="logo">
           <img height="30px" src="Navbar/logo.svg" alt="logo">
         </a></div>
@@ -30,18 +37,7 @@
           <path d="M10,8 L2,8" class="bar-3"></path>
         </svg>
       </button>
-    </nav>
-  </header>
-  <header class="header-big-screen">
-    <a href="#" class="logo">
-      <img height="30px" src="Navbar/logo.svg" alt="logo">
-    </a>
-    <nav class="navbar">
-      <a href="#landing-section">Home<span></span></a>
-      <a href="#Shop-Phones">Shop Phones<span></span></a>
-      <a href="#Accessories">Accessories<span></span></a>
-      <a href="#Account">Account<span></span></a>
-    </nav>
+    </div>
   </header>
   <section class="fullpage-menu">
     <div class="fullpage-menu-inner">
@@ -57,8 +53,19 @@
       </nav>
     </div>
   </section>
+  <header class="header-big-screen">
+    <a href="#" class="logo">
+      <img height="30px" src="Navbar/logo.svg" alt="logo">
+    </a>
+    <nav class="navbar">
+      <a href="#landing-section">Home<span></span></a>
+      <a href="#Shop-Phones">Shop Phones<span></span></a>
+      <a href="#Accessories">Accessories<span></span></a>
+      <a href="#Account">Account<span></span></a>
+    </nav>
+  </header>
   <div id="cursor"></div>
-  <main id="main" data-scroll-container>
+  <div id="main" data-scroll-container>
     <section id="landing-section">
       <video autoplay loop muted playsinline class="background-clip">
         <source src="landing page/landing.mp4" type="video/mp4">
@@ -66,47 +73,17 @@
       <div class="content">
         <h1>Hello Moto</h1>
         <h2>Intelligence Everywhere</h2>
-        <a href="#">Explore Future</a>
-      </div>
-      <div class="boxes">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+        <a href="">Explore Future</a>
       </div>
     </section>
-    <section id="features">
-      <div class="features-left">
-        <div class="features-box">
-          <div class="features-wrapper">
-          </div>
-          <div class="buttons-container">
-            <button id="prev" disabled>Prev</button>
-            <button id="next">Next</button>
-          </div>
-        </div>
-        <div class="product-box">
-          <div class="featured-products-image-container">
-          </div>
-          <button class="product-buy">
-            Buy
-          </button>
-        </div>
-      </div>
-      <div class="about-product">
-        <div class="about-wrapper">
-        </div>
-      </div>
+    <section id="Shop-Phones">
+      <h1>Shop Phones</h1>
     </section>
-
-    <section id="banner">
+    <section id="Accessories">
       <h1>Accessories</h1>
     </section>
-    <section id="trending">
-      <div class="card1">
-        Card 1
-      </div>
+    <section id="Account">
+      <h1>Account</h1>
     </section>
     <section id="footer">
       <div class="footer-container">
@@ -114,14 +91,12 @@
           <div class="content">
             <h4>MOTOROLA</h4>
             <p>About us</p>
-            <p>MOTOROLA, the Stylized M Logo, MOTO and the MOTO family of marks are trademarks of Motorola Trademark
-              Holdings, LLC. LENOVO is a trademark of Lenovo.</p>
+            <p>MOTOROLA, the Stylized M Logo, MOTO and the MOTO family of marks are trademarks of Motorola Trademark Holdings, LLC. LENOVO is a trademark of Lenovo.</p>
             <br>
             <p>All other trademarks are the property of their respective owners. © 2017 Motorola Mobility LLC.</p>
             <br>
             <br>
-            <p>All mobile phones are designed and manufactured by Motorola Mobility LLC, a wholly owned subsidiary of
-              Lenovo.</p>
+            <p>All mobile phones are designed and manufactured by Motorola Mobility LLC, a wholly owned subsidiary of Lenovo.</p>
           </div>
         </div>
         <div class="footer-mid">
@@ -191,7 +166,7 @@
         </div>
       </div>
     </section>
-  </main>
+  </div>
   <script type="module" src="/main.js"></script>
 </body>
 
