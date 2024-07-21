@@ -11,8 +11,8 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background: rgb(19, 4, 33);
-  background: radial-gradient(circle, rgb(19, 4, 33) 0%, rgb(11, 3, 35) 100%);
+  background: #001428;
+  background: radial-gradient(circle, #001428 0%, rgb(6, 2, 21) 100%);
   color: whitesmoke;
 }
 
@@ -21,13 +21,8 @@ body {
   left: 0;
   z-index: 999;
   top: 0;
-<<<<<<< Updated upstream
-  background: whitesmoke;
-  color: white;
-=======
   color: whitesmoke;
   background-color: #000;
->>>>>>> Stashed changes
   width: 100%;
   height: 100vh;
   display: flex;
@@ -390,21 +385,41 @@ body {
   }
 }
 
-@media (min-aspect-ratio: 16/9) {
-  .background-clip {
-    width: 100%;
-    height: auto;
-  }
+#features {
+  position: relative;
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  gap: 1rem;
 }
 
-@media (max-aspect-ratio: 16/9) {
-  .background-clip {
-    width: auto;
-    height: 100%;
-  }
+.features-box {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+  height: 100vh;
 }
 
-<<<<<<< Updated upstream
+.features-left {
+  display: flex;
+  flex: 2;
+}
+
+.about-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+  flex: 1;
+  height: 100vh;
+}
+
 .features-wrapper,
 .about-wrapper {
   display: flex;
@@ -678,17 +693,11 @@ body {
 }
 
 #banner {
-=======
-#Shop-Phones {
->>>>>>> Stashed changes
   min-height: 100vh;
   width: 100%;
 }
-#Accessories {
-  min-height: 100vh;
-  width: 100%;
-}
-#Account {
+
+#trending {
   min-height: 100vh;
   width: 100%;
 }
@@ -777,14 +786,17 @@ body {
   color: whitesmoke;
   transition: all 0.5s ease-in-out;
 }
+
 .footer-container .footer-mid .content ul li a i {
   opacity: 0;
   padding-right: 10px;
   transition: all 0.3s ease-in-out;
 }
+
 .footer-container .footer-mid .content ul li:hover i {
   opacity: 1;
 }
+
 .footer-container .footer-mid .content ul li:hover a {
   transform: translateX(10px);
 }
@@ -858,14 +870,17 @@ body {
   color: whitesmoke;
   transition: all 0.5s ease-in-out;
 }
+
 .footer-container .footer-right .content ul li a i {
   opacity: 0;
   padding-right: 10px;
   transition: all 0.3s ease-in-out;
 }
+
 .footer-container .footer-right .content ul li:hover i {
   opacity: 1;
 }
+
 .footer-container .footer-right .content ul li:hover i {
   transform: translateX(10px);
 }
@@ -899,12 +914,48 @@ body {
   .footer-container .footer-right .content ul li {
     padding: 10px;
   }
+
   .footer-container .footer-mid .content ul li:nth-last-child(1) {
     padding: 10px;
   }
 }
 
+@media screen and (max-width: 1024px) {
+  #features {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 850px) {
+  .header-big-screen {
+    display: none;
+  }
+
+  .header-small-screen {
+    display: block;
+  }
+
+  .header-row {
+    padding: 30px;
+  }
+
+  .fullpage-menu-inner nav li a {
+    font-size: 54px;
+  }
+
+  #landing-section .content h1 {
+    font-size: 80px;
+  }
+
+  #landing-section .content h2 {
+    font-size: 50px;
+  }
+
+  #landing-section .content a {
+    font-size: 20px;
+    padding: 12px 20px;
+  }
+
   .footer-container .footer-left .content h4 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -929,16 +980,43 @@ body {
     width: 25px;
     height: 25px;
   }
+
   .footer-social-media .footer-social-media-img img {
     width: 15px;
     height: 15px;
   }
+
   .footer-container .footer-right .content ul {
     margin-bottom: -15%;
   }
 }
 
 @media (max-width: 750px) {
+  .header-row {
+    padding: 25px;
+  }
+
+  .fullpage-menu-inner nav li a {
+    font-size: 35px;
+  }
+
+  #landing-section .content h1 {
+    font-size: 70px;
+  }
+
+  #landing-section .content h2 {
+    font-size: 45px;
+  }
+
+  #landing-section .content a {
+    font-size: 18px;
+    padding: 10px 18px;
+  }
+
+  #landing-section .boxes .box {
+    width: 25%;
+  }
+
   .footer-container .footer-left .content h4 {
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
@@ -968,7 +1046,74 @@ body {
     width: 10px;
     height: 10px;
   }
+
   .footer-container .footer-right .content ul {
     margin-bottom: -30%;
+  }
+}
+
+
+@media (min-aspect-ratio: 16/9) {
+  .background-clip {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .background-clip {
+    width: auto;
+    height: 100%;
+  }
+}
+
+@keyframes scaleText {
+  from {
+    transform: scale(1.5)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 50vmax;
+  }
+}
+
+@keyframes backgroundChange {
+  from {
+    background-color: whitesmoke
+  }
+
+  to {
+    background-color: black
+  }
+}
+
+@keyframes colorChange {
+  from {
+    color: black
+  }
+
+  to {
+    color: white
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0;
+    z-index: -1;
   }
 }

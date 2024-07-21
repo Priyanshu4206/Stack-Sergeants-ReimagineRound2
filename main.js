@@ -307,3 +307,361 @@ function PhoneNavbar() {
   })
 }
 PhoneNavbar()
+
+function featuresAnimation(){
+  const featuredProducts = [
+    {
+      title: '5G',
+      description:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestia cumque ullam aliquid quis velit.',
+      products: [
+        {
+          productName: 'Product 1.1',
+          productImg: '/featured-Products/product_img1.svg', // Updated path
+          productDesc:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 12922,
+        },
+        {
+          productName: 'Product 1.2',
+          productImg: '/featured-Products/product_img2.svg', // Updated path
+          productDesc:
+            'Assume Something- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 102922,
+        },
+      ],
+    },
+    {
+      title: '4G',
+      description:
+        'Assume Something-em ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+      products: [
+        {
+          productName: 'Product 2.1',
+          productImg: '/featured-Products/product_img2.svg', // Updated path
+          productDesc:
+            'Assume Something- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 21212,
+        },
+        {
+          productName: 'Product 2.2',
+          productImg: '/featured-Products/product_img1.svg', // Updated path
+          productDesc:
+            'Assume Something- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 1122922,
+        },
+        {
+          productName: 'Product 2.3',
+          productImg: '/featured-Products/product_img2.svg', // Updated path
+          productDesc:
+            'Assume Something- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 23122,
+        },
+        {
+          productName: 'Product 2.4',
+          productImg: '/featured-Products/product_img1.svg', // Updated path
+          productDesc:
+            'Assume Something- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 21222,
+        },
+      ],
+    },
+    {
+      title: 'Good one',
+      description:
+        'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestia cumque ullam aliquid quis velit.',
+      products: [
+        {
+          productName: 'Product 3.1',
+          productImg: '/featured-Products/product_img1.svg', // Updated path
+          productDesc:
+            'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 12922,
+        },
+        {
+          productName: 'Product 3.2',
+          productImg: '/featured-Products/product_img2.svg', // Updated path
+          productDesc:
+            'Assume Something- Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, a! Est soluta eum perferendis molestias cumque ullam aliquid quis velit.',
+          qualities: [
+            {
+              title: 'quality 1',
+              qualityImg: '/featured-Products/qualityimg1.svg',
+            }, // Updated path
+            {
+              title: 'quality 2',
+              qualityImg: '/featured-Products/qualityimg2.svg',
+            }, // Updated path
+            {
+              title: 'quality 3',
+              qualityImg: '/featured-Products/qualityimg3.svg',
+            }, // Updated path
+          ],
+          price: 102922,
+        },
+      ],
+    },
+    // Add more objects as needed
+  ]
+  const titlesContainer = document.querySelector('.features-wrapper')
+  const imagesContainer = document.querySelector(
+    '.featured-products-image-container'
+  )
+  const aboutWrapper = document.querySelector('.about-wrapper')
+  const prevButton = document.getElementById('prev')
+  const nextButton = document.getElementById('next')
+
+  let currentIndex = 0
+  let currentProductIndex = 0
+  let autoSlideInterval
+
+  function renderFeatures() {
+    titlesContainer.innerHTML = featuredProducts
+      .map(
+        (product, index) => `
+    <div class="features-title" data-index="${index}">
+      <h2>${product.title}</h2>
+      <p>${product.description}</p>
+    </div>
+  `
+      )
+      .join('')
+  }
+
+  function renderProducts(index, productIndex) {
+    const products = featuredProducts[index].products
+    imagesContainer.innerHTML = `
+    <div class="product-wrapper">
+      <img src="${products[productIndex].productImg}" alt="${products[productIndex].productName}">
+    </div>
+  `
+    // Animate the image sliding in from the right
+    gsap.fromTo(
+      '.product-wrapper',
+      { x: '100%' },
+      { x: '0%', duration: 1, ease: 'power1.out' }
+    )
+  }
+
+  function renderAboutDetails(index, productIndex) {
+    const product = featuredProducts[index].products[productIndex]
+
+    if (product) {
+      aboutWrapper.innerHTML = `
+      <div class="about-details">
+        <h3>${product.productName}</h3>
+        <p>${product.productDesc}</p>
+        <ul class="qualities-list">
+          ${product.qualities
+            .map(
+              (quality) => `
+            <li class="quality-item">
+              <img src="${quality.qualityImg}" alt="${quality.title}"> ${quality.title}
+            </li>
+          `
+            )
+            .join('')}
+        </ul>
+        <p class="product-price">Rs ${product.price}</p>
+      </div>
+    `
+
+      const tl = gsap.timeline()
+
+      tl.fromTo(
+        '.about-details h3',
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 1, ease: 'power1.out' },
+        '<'
+      )
+
+      tl.fromTo(
+        '.about-details p:not(.product-price)',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power1.out' },
+        '<'
+      )
+
+      tl.fromTo(
+        '.about-details .qualities-list .quality-item',
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 1, stagger: 0.2, ease: 'power1.out' },
+        '<'
+      )
+
+      tl.fromTo(
+        '.about-details .product-price',
+        { opacity: 0, x: -100 },
+        { opacity: 1, x: 0, duration: 1, ease: 'power1.out' },
+        '<'
+      )
+    }
+  }
+
+  function updateButtons() {
+    prevButton.disabled = currentIndex === 0
+    nextButton.disabled = currentIndex === featuredProducts.length - 1
+  }
+
+  function slideHeadings() {
+    const boxWidth = document.querySelector('.features-title').offsetWidth
+    gsap.to('.features-wrapper', {
+      x: -currentIndex * boxWidth,
+      duration: 0.25,
+    })
+    updateButtons()
+  }
+
+  function changeSlide(offset) {
+    if (
+      currentIndex + offset >= 0 &&
+      currentIndex + offset < featuredProducts.length
+    ) {
+      currentIndex += offset
+      currentProductIndex = 0 // Reset product index for new featured product
+      renderProducts(currentIndex, currentProductIndex)
+      renderAboutDetails(currentIndex, currentProductIndex)
+      slideHeadings()
+    }
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      const products = featuredProducts[currentIndex].products
+      currentProductIndex = (currentProductIndex + 1) % products.length
+      renderProducts(currentIndex, currentProductIndex)
+      renderAboutDetails(currentIndex, currentProductIndex)
+
+      // Check if all products have been shown
+      if (currentProductIndex === 0) {
+        currentIndex = (currentIndex + 1) % featuredProducts.length
+        renderProducts(currentIndex, currentProductIndex)
+        renderAboutDetails(currentIndex, currentProductIndex)
+        slideHeadings() // Update headings after changing featured product
+      }
+    }, 3000) // Change every 3 seconds
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval)
+  }
+
+  nextButton.addEventListener('click', () => {
+    stopAutoSlide()
+    changeSlide(1)
+    startAutoSlide()
+  })
+
+  prevButton.addEventListener('click', () => {
+    stopAutoSlide()
+    changeSlide(-1)
+    startAutoSlide()
+  })
+
+  // Initial render
+  renderFeatures()
+  renderProducts(currentIndex, currentProductIndex)
+  renderAboutDetails(currentIndex, currentProductIndex)
+  updateButtons()
+  startAutoSlide()
+}
+
+featuresAnimation()
