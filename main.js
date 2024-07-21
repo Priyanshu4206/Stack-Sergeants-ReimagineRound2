@@ -30,15 +30,51 @@ ScrollTrigger.addEventListener('refresh', () => locoScroll.update())
 ScrollTrigger.refresh()
 
 function loaderAnimation() {
-  gsap.to('.loader', {
-    duration: 5,
-    y: '-100%',
-    ease: 'power4.inOut',
-    stagger: 0.2,
-    onComplete: function () {
-      landingPageAnimation()
-    },
+  const tl = gsap.timeline({
+    onComplete: landingPageAnimation,
   })
+
+  tl.to('.load-text .loaded-text', {
+    scale: 1,
+    duration: 0.5,
+    ease: 'linear',
+  })
+    .to('.load-text .loading-text', {
+      width: '50vmax',
+      duration: 1,
+      delay: 1.5,
+      ease: 'linear',
+    })
+    .to(
+      '.loader',
+      {
+        backgroundColor: 'black',
+        duration: 0.5,
+        delay: 3,
+        ease: 'linear',
+      },
+      '-=1.5'
+    )
+    .to(
+      '.load-text',
+      {
+        color: 'white',
+        duration: 0.5,
+        delay: 3,
+        ease: 'linear',
+      },
+      '-=1.5'
+    )
+    .to(
+      '.loader',
+      {
+        x: '-100%',
+        duration: 5,
+        ease: 'power4.inOut',
+        stagger: 0.2,
+      },
+      '-=0.5'
+    )
 }
 
 loaderAnimation()
@@ -63,63 +99,83 @@ function landingPageAnimation() {
   h2.innerHTML = clutter2
 
   const tl = gsap.timeline()
-  tl.fromTo(
-    '#landing-section .boxes .box',
-    { y: '100%' },
-    {
-      y: '-200%',
-      duration: 2,
-      stagger: {
-        each: 0.1,
-        from: 'random',
-        grid: 'auto',
-      },
-      ease: 'power2.out',
-    }
-  )
-  tl.fromTo(
-    '#landing-section .content h1 span',
-    {
-      y: '20%',
-      duration: 0.2,
-      opacity: 0,
-      stagger: 0.1,
-    },
-    {
-      opacity: 1,
-      y: '0%',
-      duration: 0.2,
-      stagger: 0.1,
-    }
-  )
-  tl.fromTo(
-    '#landing-section .content h2 span',
-    {
-      y: '-20%',
-      opacity: 0,
-      duration: 0.2,
-      stagger: -0.15,
-    },
-    {
-      y: '0%',
-      opacity: 1,
-      duration: 0.2,
-      stagger: -0.15,
-    },
-    '-=1.5'
-  )
 
-  tl.fromTo(
-    '#landing-section .content a',
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      duration: 1,
-      ease: 'power2.out',
-    }
-  )
+  tl.to('#landing-section', {
+    opacity: 1,
+    duration: 1,
+    ease: 'power2.out',
+  })
+    .fromTo(
+      '#landing-section .boxes .box',
+      { y: '100%' },
+      {
+        y: '-200%',
+        duration: 2,
+        stagger: {
+          each: 0.1,
+          from: 'random',
+          grid: 'auto',
+        },
+        ease: 'power2.out',
+      },
+      '<'
+    )
+    .fromTo(
+      '#landing-section .background-clip',
+      {
+        x: '30%',
+        y: '30%',
+        scale: 0.5,
+      },
+      {
+        x: '0%',
+        y: '0%',
+        scale: 1,
+        duration: 1,
+        stagger: 0.5,
+        ease: 'power2.out',
+      },
+      '+=0.5'
+    )
+    .fromTo(
+      '#landing-section .content h1 span',
+      {
+        y: '20%',
+        opacity: 0,
+        duration: 0.2,
+        stagger: 0.1,
+      },
+      {
+        opacity: 1,
+        y: '0%',
+        duration: 0.2,
+        stagger: 0.1,
+      }
+    )
+    .fromTo(
+      '#landing-section .content h2 span',
+      {
+        y: '-20%',
+        opacity: 0,
+        duration: 0.2,
+        stagger: -0.1,
+      },
+      {
+        y: '0%',
+        opacity: 1,
+        duration: 0.2,
+        stagger: -0.1,
+      },
+      '-=2'
+    )
+    .to(
+      '#landing-section .content a',
+      {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+      },
+    )
 }
 
 function cursorAnimation() {
