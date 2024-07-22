@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --primary: #a5d95a;
+  --pointer-size: 22px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,13 +21,50 @@ body {
   color: whitesmoke;
 }
 
+.disable-all {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#pointer {
+  content: '';
+  background: var(--primary);
+  width: var(--pointer-size);
+  height: var(--pointer-size);
+  transform: rotate(45deg);
+  position: absolute;
+  z-index: 9;
+  display: block;
+  outline-color: var(--primary);
+  outline-style: solid;
+  pointer-events: none;
+  outline-width: 2px;
+  animation: cursor 1s infinite;
+  box-shadow: 0px 0px 20px var(--primary);
+}
+
+@keyframes cursor {
+  from {
+    outline-offset: 0px;
+  }
+  to {
+    outline-offset: 10px;
+    outline-color: transparent;
+  }
+}
+
 .loader {
   position: fixed;
   left: 0;
   z-index: 999;
   top: 0;
+  background: #001428;
+  background: radial-gradient(circle, #001428 0%, rgb(6, 2, 21) 100%);
   color: whitesmoke;
-  background-color: #000;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -33,6 +75,7 @@ body {
 .load-text {
   position: absolute;
   font-size: 10vmax;
+  font-weight: 600;
   width: fit-content;
   display: flex;
 }
@@ -46,7 +89,6 @@ body {
   overflow: hidden;
   white-space: nowrap;
 }
-
 
 .header-small-screen {
   position: fixed;
@@ -266,7 +308,7 @@ body {
   }
 }
 
-#cursor {
+/* #cursor {
   --circle-size: 60px;
   position: fixed;
   width: var(--circle-size);
@@ -280,7 +322,7 @@ body {
   box-shadow: 0px 0px 10px 30px rgba(255, 255, 255, 0.3) inset;
   transition: opacity 0.3s ease-in-out, border 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
-}
+} */
 
 #landing-section {
   min-height: 100vh;
@@ -291,7 +333,6 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
-  opacity: 0;
 }
 
 #landing-section .background-clip {
@@ -437,7 +478,6 @@ body {
   color: white;
 }
 
-
 .about-details {
   text-align: left;
   margin: 0;
@@ -544,7 +584,7 @@ body {
 
 .mic::before,
 .mic::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -586,7 +626,7 @@ body {
 
 .mic-icon::before,
 .mic-icon::after {
-  content: "";
+  content: '';
   display: block;
   box-sizing: border-box;
   position: absolute;
@@ -620,7 +660,9 @@ body {
   transform: translate(-50%, -50%);
   border-radius: 100%;
   z-index: 1;
-  box-shadow: 10px -55px 30px 15px #823ca6, 24px -10px 47px 10px #aab3d2, -21px -25px 97px 10px #5acee3, 51px 5px 17px 10px #1b7d8f, 3px 2px 77px 10px #f30bf5;
+  box-shadow: 10px -55px 30px 15px #823ca6, 24px -10px 47px 10px #aab3d2,
+    -21px -25px 97px 10px #5acee3, 51px 5px 17px 10px #1b7d8f,
+    3px 2px 77px 10px #f30bf5;
   animation: shadow-rotate 1.5s linear infinite;
   transform-origin: center;
 }
@@ -885,6 +927,57 @@ body {
   transform: translateX(10px);
 }
 
+#cards {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: end;
+}
+
+.cards-container {
+  width: 95%;
+  display: flex;
+  height: 100%;
+}
+
+.card-left {
+  width: 50%;
+}
+
+.card-left .heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.card-left p {
+  font-size: 0.9rem;
+}
+
+.card-right {
+  width: 100%;
+  position: relative;
+  left: 20%;
+}
+
+.card-right img {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.card-right img:nth-child(1) {
+  z-index: 9;
+}
+
+.card-right img:nth-child(2) {
+  z-index: 8;
+  top: -10%;
+  left: 10%;
+  filter: blur(2px);
+}
+
 @media (max-width: 1200px) {
   .footer-container {
     flex-direction: column;
@@ -1052,7 +1145,6 @@ body {
   }
 }
 
-
 @media (min-aspect-ratio: 16/9) {
   .background-clip {
     width: 100%;
@@ -1069,11 +1161,11 @@ body {
 
 @keyframes scaleText {
   from {
-    transform: scale(1.5)
+    transform: scale(1.5);
   }
 
   to {
-    transform: scale(1)
+    transform: scale(1);
   }
 }
 
@@ -1089,27 +1181,27 @@ body {
 
 @keyframes backgroundChange {
   from {
-    background-color: whitesmoke
+    background-color: whitesmoke;
   }
 
   to {
-    background-color: black
+    background-color: black;
   }
 }
 
 @keyframes colorChange {
   from {
-    color: black
+    color: black;
   }
 
   to {
-    color: white
+    color: white;
   }
 }
 
 @keyframes fadeOut {
   from {
-    opacity: 1
+    opacity: 1;
   }
 
   to {

@@ -1,13 +1,19 @@
 import LocomotiveScroll from 'locomotive-scroll'
 import { gsap } from 'gsap'
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import 'remixicon/fonts/remixicon.css'
+import { Back, Power4 } from 'gsap'
+
 gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(MotionPathPlugin)
+
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector('#main'),
   smooth: true,
 })
 locoScroll.on('scroll', ScrollTrigger.update)
+
 ScrollTrigger.scrollerProxy('#main', {
   scrollTop(value) {
     return arguments.length
@@ -65,7 +71,7 @@ function loaderAnimation() {
       {
         y: '-200%',
         duration: 2,
-        opacity:0,
+        opacity: 0,
         stagger: {
           each: 0.1,
           from: 'random',
@@ -86,8 +92,6 @@ function loaderAnimation() {
       '-=0.5'
     )
 }
-
-loaderAnimation()
 
 function landingPageAnimation() {
   var h1 = document.querySelector('.content h1')
@@ -110,30 +114,21 @@ function landingPageAnimation() {
 
   const tl = gsap.timeline()
 
-  tl.to(
-    '#landing-section',
+  tl.fromTo(
+    '#landing-section .content h1 span',
     {
-      opacity: 1,
-      duration: 1,
-      ease: 'power2.out',
+      y: '20%',
+      opacity: 0,
+      duration: 0.2,
+      stagger: 0.1,
     },
-    '+=0.5'
+    {
+      y: '0%',
+      opacity: 1,
+      duration: 0.2,
+      stagger: 0.1,
+    }
   )
-    .fromTo(
-      '#landing-section .content h1 span',
-      {
-        y: '20%',
-        opacity: 0,
-        duration: 0.2,
-        stagger: 0.1,
-      },
-      {
-        opacity: 1,
-        y: '0%',
-        duration: 0.2,
-        stagger: 0.1,
-      }
-    )
     .fromTo(
       '#landing-section .content h2 span',
       {
@@ -156,87 +151,6 @@ function landingPageAnimation() {
       ease: 'power2.out',
     })
 }
-
-function cursorAnimation() {
-  const cur = document.getElementById('cursor')
-  const mouse = { x: 0, y: 0 }
-  const previousMouse = { x: 0, y: 0 }
-  const circle = { x: 0, y: 0 }
-  let currentScale = 0
-  let currentAngle = 0
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.x
-    mouse.y = e.y
-  })
-  const speed = 0.12
-  const tick = () => {
-    circle.x += (mouse.x - circle.x) * speed
-    circle.y += (mouse.y - circle.y) * speed
-    const translateTransform = `translate(${circle.x}px, ${circle.y}px)`
-    const deltaMouseX = mouse.x - previousMouse.x
-    const deltaMouseY = mouse.y - previousMouse.y
-    previousMouse.x = mouse.x
-    previousMouse.y = mouse.y
-    const mouseVelocity = Math.min(
-      Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 10,
-      150
-    )
-    const scaleValue = (mouseVelocity / 150) * 0.5
-    currentScale += (scaleValue - currentScale) * speed
-    const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`
-    const angle = (Math.atan2(deltaMouseY, deltaMouseX) * 180) / Math.PI
-    if (mouseVelocity > 20) {
-      currentAngle = angle
-    }
-    const rotateTransform = `rotate(${currentAngle}deg)`
-    cur.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`
-    window.requestAnimationFrame(tick)
-  }
-  tick()
-
-  var button = document.querySelector('.content a')
-  button.addEventListener('mouseenter', function () {
-    cur.style.border = '5px solid #000'
-    cur.style.boxShadow = '0px 0px 10px 30px rgba(0, 0, 0, 0.3) inset'
-  })
-
-  button.addEventListener('mouseleave', function () {
-    cur.style.border = '5px solid #fff'
-    cur.style.boxShadow = '0px 0px 10px 30px rgba(255, 255, 255, 0.3) inset'
-  })
-
-  var footer = document.querySelector('#footer')
-  footer.addEventListener('mouseenter', function () {
-    // cur.style.border = '10px solid #000'
-    // cur.style.boxShadow = '0px 0px 10px 30px rgba(0, 0, 0, 0.3)'
-    // cur.style.transform = scale(0)
-    cur.style.opacity = 0
-  })
-
-  footer.addEventListener('mouseleave', function () {
-    // cur.style.border = '10px solid #fff'
-    // cur.style.boxShadow = '0px 0px 10px 30px rgba(255, 255, 255, 0.3)'
-    // cur.style.transform = scale(1)
-    cur.style.opacity = 1
-  })
-
-  var navbar = document.querySelector('header')
-  navbar.addEventListener('mouseenter', function () {
-    // cur.style.border = '10px solid #000'
-    // cur.style.boxShadow = '0px 0px 10px 30px rgba(0, 0, 0, 0.3)'
-    // cur.style.transform = scale(0)
-    cur.style.opacity = 0
-  })
-
-  navbar.addEventListener('mouseleave', function () {
-    // cur.style.border = '10px solid #fff'
-    // cur.style.boxShadow = '0px 0px 10px 30px rgba(255, 255, 255, 0.3)'
-    // cur.style.transform = scale(1)
-    cur.style.opacity = 1
-  })
-}
-
-cursorAnimation()
 
 function PhoneNavbar() {
   var menuToggle = document.getElementById('menuToggle')
@@ -306,9 +220,8 @@ function PhoneNavbar() {
     navTl.reversed(!navTl.reversed())
   })
 }
-PhoneNavbar()
 
-function featuresAnimation(){
+function featuresAnimation() {
   const featuredProducts = [
     {
       title: '5G',
@@ -664,4 +577,131 @@ function featuresAnimation(){
   startAutoSlide()
 }
 
-featuresAnimation()
+function newCursor() {
+  const colors = ['#a5d95a', '#f56c6c', '#4a90e2', '#50e3c2']
+  let colorIndex = 0
+  const pointer = document.getElementById('pointer')
+  const pointerSize = parseFloat(
+    getComputedStyle(document.body)
+      .getPropertyValue('--pointer-size')
+      .replace('px', '')
+  )
+  function updatePointerColor() {
+    pointer.style.backgroundColor = colors[colorIndex]
+    pointer.style.outlineColor = colors[colorIndex]
+    colorIndex = (colorIndex + 1) % colors.length
+  }
+
+  updatePointerColor()
+  setInterval(updatePointerColor, 1000)
+
+  window.addEventListener('mousemove', function (e) {
+    const x = e.clientX - pointerSize / 2 + 'px'
+    const y = e.clientY - pointerSize / 2 + 'px'
+    const target = e.target
+
+    gsap.to(pointer, {
+      duration: 0.5,
+      ease: Back.easeOut.config(1.7),
+      left: x,
+      top: y,
+    })
+
+    if (target.localName !== 'html') {
+      if (
+        target.localName === 'a' ||
+        target.dataset.cursor === 'false' ||
+        target.parentNode.dataset.cursor === 'false'
+      ) {
+        gsap.to(pointer, { duration: 1, ease: Power4.easeOut, scale: 0 })
+      } else {
+        gsap.to(pointer, { duration: 1, ease: Power4.easeOut, scale: 1 })
+      }
+    }
+  })
+
+  window.addEventListener('mousedown', function (e) {
+    if (
+      e.target.dataset.cursor === 'stretch' ||
+      e.target.parentNode.dataset.cursor === 'stretch'
+    ) {
+      gsap.to(pointer, {
+        duration: 0.3,
+        ease: Power4.easeOut,
+        rotation: 0,
+        width: pointerSize + 15,
+        height: pointerSize - 10,
+      })
+    }
+  })
+
+  window.addEventListener('mouseup', function () {
+    gsap.to(pointer, {
+      duration: 0.3,
+      ease: Power4.easeOut,
+      rotation: 45,
+      width: pointerSize,
+      height: pointerSize,
+    })
+  })
+}
+
+function cardsAnimation() {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#cards',
+      scroller: '#main',
+      start: 'top 50%',
+      end: 'bottom top',
+      scrub: true,
+      pin: true,
+      markers: true,
+    },
+  })
+
+  gsap.from('#cards .cards-container .card-left', {
+    duration: 2,
+    opacity: 0,
+    motionPath: {
+      path: [
+        { x: -100, y: window.innerHeight },
+        { x: 0, y: 0 },
+      ],
+      curviness: 1.5,
+      autoRotate: false,
+    },
+    ease: 'power2.out',
+  })
+  gsap.fromTo(
+    '#cards .cards-container .card-right',
+    {
+      x: -100,
+      y: -100,
+      opacity: 0,
+    },
+    {
+      duration: 2,
+      opacity: 1,
+      x: 0,
+      y: 0,
+      ease: 'power2.out',
+    }
+  )
+  tl.to('.card-right img:nth-child(1)', {
+    x: 100,
+    y: 100,
+    opacity: 0,
+  })
+
+  tl.to('.card-right img:nth-child(2)', {
+    opacity: 1,
+    filter: 'blur(0px)',
+  })
+}
+document.addEventListener('DOMContentLoaded', () => {
+  loaderAnimation()
+  PhoneNavbar()
+  featuresAnimation()
+  newCursor()
+  cardsAnimation()
+})
