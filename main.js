@@ -1,12 +1,14 @@
 import LocomotiveScroll from "locomotive-scroll";
-import { gsap } from "gsap";
+import { Expo, gsap } from "gsap";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "remixicon/fonts/remixicon.css";
 import { Back, Power4 } from "gsap";
+import { Draggable } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin);
+gsap.registerPlugin(Draggable);
 
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector("#main"),
@@ -65,13 +67,22 @@ function loaderAnimation() {
       duration: 0.5,
       ease: "linear",
     })
+    .to(
+      ".loader",
+      {
+        y: "-100%",
+        duration: 1,
+        ease: "power4.inOut",
+        stagger: 0.2,
+      },
+      "-=0.5"
+    )
     .fromTo(
-      ".loader .boxes .box",
+      ".after-loader .boxes .box",
       { y: "100%" },
       {
         y: "-200%",
         duration: 2,
-        opacity: 0,
         stagger: {
           each: 0.1,
           from: "random",
@@ -81,15 +92,18 @@ function loaderAnimation() {
       },
       "<"
     )
-    .to(
-      ".loader",
+    .fromTo(
+      ".after-loader",
       {
-        scale: 0,
+        x: "0%",
+        duration: 0,
+        ease: "power4.inOut",
+      },
+      {
+        x: "100%",
         duration: 1,
         ease: "power4.inOut",
-        stagger: 0.2,
-      },
-      "-=0.5"
+      }
     );
 }
 
@@ -580,23 +594,12 @@ function featuresAnimation() {
 }
 
 function newCursor() {
-  const colors = ["#a5d95a", "#f56c6c", "#4a90e2", "#50e3c2"];
-  let colorIndex = 0;
   const pointer = document.getElementById("pointer");
   const pointerSize = parseFloat(
     getComputedStyle(document.body)
       .getPropertyValue("--pointer-size")
       .replace("px", "")
   );
-  function updatePointerColor() {
-    pointer.style.backgroundColor = colors[colorIndex];
-    pointer.style.outlineColor = colors[colorIndex];
-    colorIndex = (colorIndex + 1) % colors.length;
-  }
-
-  updatePointerColor();
-  setInterval(updatePointerColor, 1000);
-
   window.addEventListener("mousemove", function (e) {
     const x = e.clientX - pointerSize / 2 + "px";
     const y = e.clientY - pointerSize / 2 + "px";
@@ -653,57 +656,245 @@ function cardsAnimation() {
     scrollTrigger: {
       trigger: "#cards",
       scroller: "#main",
-      start: "top 50%",
+      start: "top 40%",
       end: "bottom top",
       scrub: true,
       pin: true,
-      markers: true,
     },
   });
 
-  gsap.from("#cards .cards-container .card-left", {
+  tl.from("#cards .cards-container .card-left", {
     duration: 2,
     opacity: 0,
     motionPath: {
       path: [
-        { x: -100, y: window.innerHeight },
         { x: 0, y: 0 },
+        { x: -100, y: window.innerHeight },
       ],
-      curviness: 1.5,
+      curviness: 2,
       autoRotate: false,
     },
     ease: "power2.out",
   });
-  gsap.fromTo(
+  tl.from(
     "#cards .cards-container .card-right",
     {
-      x: -100,
-      y: -100,
+      duration: 2,
+      opacity: 0,
+      motionPath: {
+        path: [
+          { x: 0, y: 0 },
+          { x: window.innerWidth, y: window.innerHeight },
+        ],
+        curviness: 2,
+        autoRotate: false,
+      },
+      ease: "power2.out",
+    },
+    "-=2.1"
+  );
+  tl.to(
+    ".card-right img:nth-child(1)",
+    {
+      x: 100,
+      y: 100,
       opacity: 0,
     },
-    {
-      duration: 2,
-      opacity: 1,
-      x: 0,
-      y: 0,
-      ease: "power2.out",
-    }
+    "+=2.5"
   );
-  tl.to(".card-right img:nth-child(1)", {
-    x: 100,
-    y: 100,
-    opacity: 0,
-  });
-
   tl.to(".card-right img:nth-child(2)", {
+    x: "-10%",
+    y: "20",
     opacity: 1,
     filter: "blur(0px)",
   });
+  tl.to(
+    ".card-right img:nth-child(2)",
+    {
+      x: 100,
+      y: 100,
+      opacity: 0,
+    },
+    "+=2.5"
+  );
 }
+
+// Trending Animation
+function trendingAnimation() {
+  gsap.to("#circular-slider-area", {
+    rotate: 0,
+    ease: Expo.easeInOut,
+    duration: 1,
+  });
+}
+
+const stripes = document.querySelectorAll(".stripes");
+let previousRightBox = null; // Variable to keep track of the previously clicked right-box
+const step = 25; // Degree step for rotation
+const range = [-50, 50]; // Range of rotation degrees
+
+function setActiveStripe(rotation) {
+  const activeIndex = 2 - rotation / step; // Adjusted to reverse the index calculation
+  stripes.forEach((stripe, index) => {
+    const rightBox = stripe.querySelector(".right-box");
+    if (index === activeIndex) {
+      gsap.to(rightBox, {
+        x: "1rem",
+        color: "blue",
+        fontSize: "2.5rem",
+        duration: 0.3,
+      });
+      updateProductInfo(index);
+      previousRightBox = rightBox;
+    } else {
+      gsap.to(rightBox, {
+        x: 0,
+        color: "whitesmoke",
+        fontSize: "2rem",
+        duration: 0.3,
+      });
+    }
+  });
+}
+
+function updateProductInfo(index) {
+  const products = [
+    {
+      title: "Product 1",
+      imgSrc: "./public/featured-Products/product_img01.png",
+    },
+    {
+      title: "Product 2",
+      imgSrc: "./public/featured-Products/product_img02.png",
+    },
+    {
+      title: "Product 3",
+      imgSrc: "./public/featured-Products/product_img01.png",
+    },
+    {
+      title: "Product 4",
+      imgSrc: "./public/featured-Products/product_img02.png",
+    },
+    {
+      title: "Product 5",
+      imgSrc: "./public/featured-Products/product_img01.png",
+    },
+  ];
+
+  const selectedProduct = products[index];
+  const productTitle = document.querySelector(".product-title");
+  const productImg = document.querySelector(".product-img-wrapper img");
+  const hologramLight = document.querySelector(".hologram-light");
+
+  productTitle.textContent = selectedProduct.title;
+
+  // Reset image source to trigger reload
+  productImg.src = "";
+  productImg.src = selectedProduct.imgSrc;
+
+  // Animate hologram light
+  hologramLight.style.animation = "none";
+  productImg.style.opacity = 0; // Start with hidden image
+  requestAnimationFrame(() => {
+    hologramLight.style.animation = "hologram 1s ease-in-out forwards";
+    productImg.style.transition =
+      "opacity 0.5s ease-in-out, transform 0.5s ease-in-out";
+    productImg.style.opacity = 1;
+    productImg.style.transform = "scale(1)";
+  });
+
+  // Ensure hologram animation resets and triggers on image load
+  productImg.addEventListener(
+    "load",
+    () => {
+      hologramLight.style.animation = "none";
+      productImg.style.transform = "scale(0)";
+      requestAnimationFrame(() => {
+        hologramLight.style.animation = "hologram 1s ease-in-out forwards";
+        productImg.style.transform = "scale(1)";
+      });
+    },
+    { once: true }
+  ); // Ensure the listener is added only once
+}
+
+Draggable.create("#circular-slider-area", {
+  type: "rotation",
+  bounds: {
+    minRotation: range[0],
+    maxRotation: range[1],
+  },
+  snap: (endValue) => {
+    const snappedValue = Math.round(endValue / step) * step;
+    const clampedValue = Math.max(range[0], Math.min(snappedValue, range[1]));
+    setActiveStripe(clampedValue);
+    return clampedValue;
+  },
+  onDrag: function () {
+    const rotation = this.rotation;
+    const snappedValue = Math.round(rotation / step) * step;
+    const clampedValue = Math.max(range[0], Math.min(snappedValue, range[1]));
+    setActiveStripe(clampedValue);
+  },
+  onDragEnd: function () {
+    const rotation = this.rotation;
+    const snappedValue = Math.round(rotation / step) * step;
+    const clampedValue = Math.max(range[0], Math.min(snappedValue, range[1]));
+    setActiveStripe(clampedValue);
+    gsap.to(this.target, {
+      rotation: clampedValue,
+    });
+  },
+});
+
+stripes.forEach((stripe, index) => {
+  const rightBox = stripe.querySelector(".right-box");
+  if (rightBox) {
+    if (index === 2) {
+      gsap.set(rightBox, {
+        x: "1rem",
+        color: "blue",
+        fontSize: "2.5rem",
+      });
+      previousRightBox = rightBox;
+    } else {
+      gsap.set(rightBox, {
+        fontSize: "2rem",
+        color: "whitesmoke",
+      });
+    }
+
+    rightBox.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const active = 3;
+      const rotateBy = (active - (index + 1)) * 25;
+      gsap.to("#circular-slider-area", {
+        rotate: rotateBy,
+      });
+      if (previousRightBox && previousRightBox !== rightBox) {
+        gsap.to(previousRightBox, {
+          x: 0,
+          color: "whitesmoke",
+          fontSize: "2rem",
+        });
+      }
+      gsap.to(rightBox, {
+        x: "1rem",
+        color: "blue",
+        fontSize: "2.5rem",
+      });
+      previousRightBox = rightBox;
+      updateProductInfo(index);
+    });
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   loaderAnimation();
-  PhoneNavbar();
   featuresAnimation();
+  PhoneNavbar();
   newCursor();
   cardsAnimation();
+  trendingAnimation();
+  initializeSlider();
 });
