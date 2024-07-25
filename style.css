@@ -10,7 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  cursor: none;
+  /* cursor: none; */
 }
 
 section {
@@ -415,6 +415,7 @@ body {
 }
 
 @media (max-width: 750px) {
+
   #landing-section .content h1 {
     font-size: 70px;
   }
@@ -444,6 +445,16 @@ body {
   gap: 1rem;
 }
 
+.features-left {
+  flex: 1;
+  height: 60%;
+}
+
+#features .wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
 .features-box {
   max-width: 320px;
   display: flex;
@@ -451,11 +462,13 @@ body {
   justify-content: center;
   gap: 1rem;
   overflow: hidden;
+  width: 100%;
 }
 
-.features-left {
+.features-right {
   display: flex;
   flex: 2;
+  gap: 2rem;
   height: 80%;
 }
 
@@ -547,7 +560,8 @@ button:disabled {
   align-items: center;
   gap: 1rem;
   overflow: hidden;
-  flex: 1;
+  height: 450px;
+  width: 50%;
 }
 
 .about-product {
@@ -555,8 +569,8 @@ button:disabled {
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  overflow: hidden;
-  max-width: 320px;
+  flex: 1;
+  height: 75%;
 }
 
 .about-details {
@@ -591,7 +605,7 @@ button:disabled {
 }
 
 .product-wrapper img {
-  width: 60%;
+  width: 100%;
   height: 90%;
   object-fit: contain;
   transition: transform 1s ease;
@@ -879,13 +893,14 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  height: 80vh;
+  margin: 4rem 0;
 }
 
 #form .box {
   position: relative;
   width: 80%;
-  height: 420px;
+  height: 100%;
   color: whitesmoke;
   overflow: hidden;
   border-radius: 2rem;
@@ -896,8 +911,8 @@ h1 {
   position: absolute;
   top: -50%;
   left: -50%;
-  width: 380px;
-  height: 420px;
+  width: 1000px;
+  height: 1000px;
   background: linear-gradient(0deg,
       transparent,
       transparent,
@@ -914,8 +929,8 @@ h1 {
   position: absolute;
   top: -50%;
   left: -50%;
-  width: 380px;
-  height: 420px;
+  width: 1000px;
+  height: 1000px;
   background: linear-gradient(0deg,
       transparent,
       transparent,
@@ -930,7 +945,6 @@ h1 {
 
 .borderLine {
   position: absolute;
-  top: 0;
   inset: 0;
 }
 
@@ -939,8 +953,8 @@ h1 {
   position: absolute;
   top: -50%;
   left: -50%;
-  width: 380px;
-  height: 420px;
+  width: 1000px;
+  height: 1000px;
   background: linear-gradient(0deg,
       transparent,
       transparent,
@@ -958,8 +972,8 @@ h1 {
   position: absolute;
   top: -50%;
   left: -50%;
-  width: 380px;
-  height: 420px;
+  width: 1000px;
+  height: 1000px;
   background: linear-gradient(0deg,
       transparent,
       transparent,
@@ -986,16 +1000,17 @@ h1 {
   position: absolute;
   border-radius: 2rem;
   inset: 4px;
-  background: #001428;
   background: radial-gradient(circle, #001428 0%, rgb(6, 2, 21) 100%);
-  padding: 50px 40px;
+  padding: 2rem 0.25rem;
   z-index: 2;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 #form .box form h2 {
+  font-size: 3rem;
   font-weight: 500;
   text-align: center;
   text-transform: uppercase;
@@ -1003,7 +1018,8 @@ h1 {
 
 #form .box form .inputBox {
   position: relative;
-  width: 400px;
+  max-width: 420px;
+  width: auto;
   margin-top: 35px;
 }
 
@@ -1015,17 +1031,20 @@ h1 {
   outline: none;
   border: none;
   box-shadow: none;
-  color: #000;
+  color: white;
   font-size: 1em;
   letter-spacing: 0.05em;
   transition: 0.5s;
   z-index: 10;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  border-bottom: 2px solid white;
 }
 
 #form .box form .inputBox span {
   position: absolute;
   left: 0;
-  padding: 20px 10px 10px;
+  padding: 20px 10px 10px 0px;
   pointer-events: none;
   color: #8f8f8f;
   font-size: 1em;
@@ -1039,13 +1058,17 @@ h1 {
   transform: translateY(-34px);
 }
 
+#form .box form .inputBox input:focus {
+  border: 2px solid white;
+}
+
 #form .box form .inputBox i {
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2px;
-  background: whitesmoke;
+  background: transparent;
   border-radius: 4px;
   overflow: hidden;
   transition: 0.5s;
@@ -1061,7 +1084,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -1387,12 +1410,24 @@ h1 {
 }
 
 @media screen and (max-width: 1024px) {
-  #features {
+  .wrapper {
     flex-direction: column;
   }
 }
 
 @media (max-width: 850px) {
+  .features-right {
+    flex-direction: column;
+  }
+
+  .product-box {
+    width: 100%;
+  }
+
+  .buttons-container {
+    justify-content: center;
+  }
+
   .header-big-screen {
     display: none;
   }
@@ -1460,6 +1495,10 @@ h1 {
 @media (max-width: 750px) {
   .header-row {
     padding: 25px;
+  }
+
+  #form .box form h2 {
+    font-size: 1.5rem;
   }
 
   .fullpage-menu-inner nav li a {
