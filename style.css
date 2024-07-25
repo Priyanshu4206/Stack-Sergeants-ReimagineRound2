@@ -178,7 +178,7 @@ body {
   overflow: hidden;
 }
 
-.fullpage-menu-inner nav li + li {
+.fullpage-menu-inner nav li+li {
   margin-top: 30px;
 }
 
@@ -246,12 +246,10 @@ body {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   z-index: -1;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   transition: 1s linear;
 }
 
@@ -439,8 +437,9 @@ body {
   position: relative;
   padding: 5%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   gap: 1rem;
 }
@@ -457,7 +456,7 @@ body {
 .features-left {
   display: flex;
   flex: 2;
-  height: 100%;
+  height: 80%;
 }
 
 .features-wrapper,
@@ -465,7 +464,7 @@ body {
   display: flex;
   transition: transform 0.2s ease-in-out;
   align-items: center;
-  height: 100%;
+  height: 80%;
 }
 
 .features-title {
@@ -547,6 +546,7 @@ button:disabled {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  overflow: hidden;
   flex: 1;
 }
 
@@ -646,6 +646,7 @@ button:disabled {
   position: relative;
   margin: 20vw 0;
 }
+
 #banner .slider {
   position: absolute;
   width: 200px;
@@ -662,6 +663,7 @@ button:disabled {
   0% {
     transform: perspective(1000px) rotateY(0deg);
   }
+
   100% {
     transform: perspective(1000px) rotateY(360deg);
   }
@@ -669,10 +671,8 @@ button:disabled {
 
 #banner .slider .item {
   position: absolute;
-  transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity))))
-    translateZ(550px);
-  -webkit-box-reflect: below 0px
-    linear-gradient(transparent, transparent, #001428);
+  transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity)))) translateZ(550px);
+  -webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #001428);
 }
 
 #banner .slider .item img {
@@ -711,14 +711,30 @@ button:disabled {
   font-size: 2em;
 }
 
+
 #trending {
   position: relative;
-  height: 100vh;
   width: 100%;
-  overflow: hidden;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  /* background-color: brown; */
+  display: flex;
+  align-items: center;
+  position: relative;
   justify-content: flex-end;
-  overflow: visible;
 }
 
 #circular-slider-area {
@@ -781,7 +797,7 @@ button:disabled {
 }
 
 .right-box {
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   text-indent: 1rem;
   align-items: center;
@@ -794,17 +810,15 @@ button:disabled {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 1rem;
   align-items: center;
 }
 
 .product-info-area .product-title {
-  font-size: 3rem;
-}
-
-
-.product-info-area button {
-  margin-top: 10rem;
+  font-size: 2rem;
+  width: 50%;
+  text-align: center;
 }
 
 .product-img-container {
@@ -812,14 +826,14 @@ button:disabled {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60%;
+  height: 65%;
   justify-content: center;
   position: relative;
 }
 
 .product-img-wrapper {
   width: 100%;
-  height: 100%;
+  height: 75%;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -846,14 +860,11 @@ button:disabled {
 }
 
 .hologram-projector {
-  margin: 2rem;
-  width: 80%;
-  height: 80px;
+  width: 60%;
+  height: 40px;
   border: 2px solid rgba(0, 255, 255, 0.5);
   border-radius: 100%;
   transform: rotateX(50deg);
-  position: absolute;
-  bottom: -20%;
   box-shadow: #001428bb 0px -23px 25px 0px inset,
     rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
     rgba(0, 255, 255, 0.2) 0px -79px 40px 0px inset,
@@ -862,6 +873,7 @@ button:disabled {
     rgba(0, 255, 255, 0.5) 0px 16px 8px 0px,
     rgba(0, 0, 0, 0.09) 0px 32px 16px 0px;
 }
+
 
 #form {
   display: flex;
@@ -872,7 +884,7 @@ button:disabled {
 
 #form .box {
   position: relative;
-  width: 30%;
+  width: 80%;
   height: 420px;
   color: whitesmoke;
   overflow: hidden;
@@ -886,14 +898,12 @@ button:disabled {
   left: -50%;
   width: 380px;
   height: 420px;
-  background: linear-gradient(
-    0deg,
-    transparent,
-    transparent,
-    #3dabb351,
-    #3dabb351,
-    #3dabb351
-  );
+  background: linear-gradient(0deg,
+      transparent,
+      transparent,
+      #3dabb351,
+      #3dabb351,
+      #3dabb351);
   z-index: 1;
   transform-origin: bottom right;
   animation: animate 6s linear infinite;
@@ -906,14 +916,12 @@ button:disabled {
   left: -50%;
   width: 380px;
   height: 420px;
-  background: linear-gradient(
-    0deg,
-    transparent,
-    transparent,
-    #3dabb351,
-    #3dabb351,
-    #3dabb351
-  );
+  background: linear-gradient(0deg,
+      transparent,
+      transparent,
+      #3dabb351,
+      #3dabb351,
+      #3dabb351);
   z-index: 1;
   transform-origin: bottom right;
   animation: animate 6s linear infinite;
@@ -933,14 +941,12 @@ button:disabled {
   left: -50%;
   width: 380px;
   height: 420px;
-  background: linear-gradient(
-    0deg,
-    transparent,
-    transparent,
-    #ba356151,
-    #ba356151,
-    #ba356151
-  );
+  background: linear-gradient(0deg,
+      transparent,
+      transparent,
+      #ba356151,
+      #ba356151,
+      #ba356151);
   z-index: 1;
   transform-origin: bottom right;
   animation: animate 6s linear infinite;
@@ -954,14 +960,12 @@ button:disabled {
   left: -50%;
   width: 380px;
   height: 420px;
-  background: linear-gradient(
-    0deg,
-    transparent,
-    transparent,
-    #ba356151,
-    #ba356151,
-    #ba356151
-  );
+  background: linear-gradient(0deg,
+      transparent,
+      transparent,
+      #ba356151,
+      #ba356151,
+      #ba356151);
   z-index: 1;
   transform-origin: bottom right;
   animation: animate 6s linear infinite;
@@ -972,6 +976,7 @@ button:disabled {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -1028,7 +1033,7 @@ button:disabled {
   transition: 0.5s;
 }
 
-#form .box form .inputBox input:focus ~ span {
+#form .box form .inputBox input:focus~span {
   color: whitesmoke;
   font-size: 0.75em;
   transform: translateY(-34px);
@@ -1047,7 +1052,7 @@ button:disabled {
   pointer-events: none;
 }
 
-#form .box form .inputBox input:focus ~ i {
+#form .box form .inputBox input:focus~i {
   height: 44px;
 }
 
@@ -1306,6 +1311,7 @@ button:disabled {
 .card-left p {
   font-size: 1.2rem;
 }
+
 .card-left p span {
   padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
