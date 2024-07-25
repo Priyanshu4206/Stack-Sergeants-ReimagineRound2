@@ -169,7 +169,7 @@ function landingPageAnimation() {
     )
     .to("#landing-section .content a", {
       opacity: 1,
-      duration: 1,
+      duration: 0.5,
       ease: "power2.out",
     });
 }
@@ -247,10 +247,10 @@ function featuresAnimation() {
   const featuredProducts = [
     {
       title: "5G",
-      description: "a faster future today. you got it.",
+      description: "A faster future today. You got it.",
       products: [
         {
-          productName: "razr 50 ultra",
+          productName: "Razr 50 Ultra",
           productImg: "/features/razr-50-ultra.png",
           productDesc:
             "The new motorola razr 50 ultra comes with moto buds+ in the box, and the external display is integrated seamlessly with the moto buds+ settings2. With moto buds+ you can experience a new and powerful world of audio featuring Sound by Bose",
@@ -267,7 +267,7 @@ function featuresAnimation() {
           price: 94999,
         },
         {
-          productName: "edge 5g pro",
+          productName: "Edge 5g Pro",
           productImg: "/features/edge-50-pro.png",
           productDesc:
             "The motorola edge 50 pro is the world’s first smartphone with a Pantone™ Validated camera and display. Confidently capture and view the world as you see it with Pantone Validated color and skin tones. Every Pantone Validated device has met Pantone’s evaluation and grading criteria by authentically simulating the full range of real-world Pantone Colors3.",
@@ -294,7 +294,7 @@ function featuresAnimation() {
       description: "Redefining elegance",
       products: [
         {
-          productName: "edge-50-fusion",
+          productName: "Edge 50 Fusion",
           productImg: "/features/edge-50-fusion.png",
           productDesc:
             "Curved edges, smooth contours, seamless camera housing, and the ultra-thin design of motorola edge 50 fusion gives you a premium tactile experience. Choose between Hot Pink in a vegan suede or Marshmallow Blue in a vegan leather finish, or go with a sophisticated and smooth matte finish in Forest Blue.",
@@ -311,7 +311,7 @@ function featuresAnimation() {
           price: 22999,
         },
         {
-          productName: "g64",
+          productName: "G64",
           productImg: "/features/g64.png",
           productDesc:
             "Experience gaming without glitches, smoother videos, and more with the MediaTek Dimensity 7025 octa-core processor offering frequencies up to 2.5GHz. Download your favorite content at lightning-fast 5G speed1. Further, effortlessly switch between apps and have them run smoothly in the background with up to 12GB of RAM2.",
@@ -334,7 +334,7 @@ function featuresAnimation() {
       description: "Reimagine creativity with moto ai",
       products: [
         {
-          productName: "razr 50 ultra",
+          productName: "Razr 50 Ultra",
           productImg: "/features/razr-50-ultra.png",
           productDesc:
             "The new motorola razr 50 ultra comes with moto buds+ in the box, and the external display is integrated seamlessly with the moto buds+ settings2. With moto buds+ you can experience a new and powerful world of audio featuring Sound by Bose",
@@ -351,7 +351,7 @@ function featuresAnimation() {
           price: 94999,
         },
         {
-          productName: "edge 5g pro",
+          productName: "Edge 5g Pro",
           productImg: "/features/edge-50-pro.png",
           productDesc:
             "The motorola edge 50 pro is the world’s first smartphone with a Pantone™ Validated camera and display. Confidently capture and view the world as you see it with Pantone Validated color and skin tones. Every Pantone Validated device has met Pantone’s evaluation and grading criteria by authentically simulating the full range of real-world Pantone Colors3.",
@@ -657,10 +657,11 @@ function cardsAnimation() {
     scrollTrigger: {
       trigger: "#cards",
       scroller: "#main",
-      start: "top 10%",
-      end: "top -400%",
+      start: "top 60%",
+      end: "top -50%",
       scrub: true,
-      pin: true,
+      pin: "true",
+      pinType: "fixed",
     },
   });
 
@@ -757,7 +758,7 @@ function setActiveStripe(rotation) {
     if (index === activeIndex) {
       gsap.to(rightBox, {
         x: "1rem",
-        color: "blue",
+        color: "white",
         fontSize: "2.5rem",
         duration: 0.3,
       });
@@ -766,7 +767,7 @@ function setActiveStripe(rotation) {
     } else {
       gsap.to(rightBox, {
         x: 0,
-        color: "whitesmoke",
+        color: "grey",
         fontSize: "2rem",
         duration: 0.3,
       });
@@ -777,23 +778,23 @@ function setActiveStripe(rotation) {
 function updateProductInfo(index) {
   const products = [
     {
-      title: "motorola razr 50 ultra",
+      title: "Motorola Razr 50 Ultra",
       imgSrc: "/featured-Products/159051-800-auto.png",
     },
     {
-      title: "motorola edge 50 pro",
+      title: "Motorola Edge 50 Pro",
       imgSrc: "/featured-Products/edge-50-pro.png",
     },
     {
-      title: "motorola edge 50 fusion",
+      title: "Motorola Edge 50 Fusion",
       imgSrc: "/featured-Products/edge-50-fusion.png",
     },
     {
-      title: "motorola g85",
+      title: "Motorola G85",
       imgSrc: "/featured-Products/g85.png",
     },
     {
-      title: "motorola g64",
+      title: "Motorola G64",
       imgSrc: "/featured-Products/g64.png",
     },
   ];
@@ -859,14 +860,14 @@ stripes.forEach((stripe, index) => {
     if (index === 2) {
       gsap.set(rightBox, {
         x: "1rem",
-        color: "blue",
+        color: "white",
         fontSize: "2.5rem",
       });
       previousRightBox = rightBox;
     } else {
       gsap.set(rightBox, {
         fontSize: "2rem",
-        color: "whitesmoke",
+        color: "grey",
       });
     }
 
@@ -880,13 +881,13 @@ stripes.forEach((stripe, index) => {
       if (previousRightBox && previousRightBox !== rightBox) {
         gsap.to(previousRightBox, {
           x: 0,
-          color: "whitesmoke",
+          color: "grey",
           fontSize: "2rem",
         });
       }
       gsap.to(rightBox, {
         x: "1rem",
-        color: "blue",
+        color: "white",
         fontSize: "2.5rem",
       });
       previousRightBox = rightBox;
@@ -904,3 +905,115 @@ document.addEventListener("DOMContentLoaded", () => {
   cardsAnimation();
   trendingAnimation();
 });
+
+function trendingAnimationScroll() {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#trending",
+      scroller: "#main",
+      start: "top 50%",
+      end: "top -70%",
+      scrub: true,
+    },
+  });
+  tl.fromTo(
+    "#trending #circular-slider-area",
+    {
+      x: "-40%",
+      opacity: 0,
+      duration: 8,
+      ease: "power4.inOut",
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      duration: 8,
+      ease: "power4.inOut",
+    }
+  );
+  tl.fromTo(
+    "#trending .product-info-area .product-title",
+    {
+      x: "40%",
+      opacity: 0,
+      duration: 8,
+      ease: "power4.inOut",
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      duration: 8,
+      ease: "power4.inOut",
+      stagger: 0.2,
+    }
+  );
+
+  tl.fromTo(
+    "#trending .product-info-area .product-img-wrapper img",
+    {
+      x: "40%",
+      opacity: 0,
+      duration: 8,
+      ease: "power4.inOut",
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      duration: 8,
+      ease: "power4.inOut",
+      stagger: 0.2,
+    }
+  );
+  tl.fromTo(
+    ".hologram-projector",
+    {
+      scale: 0,
+      opacity: 0,
+      duration: 8,
+      ease: "power4.inOut",
+    },
+    {
+      scale: 1,
+      opacity: 1,
+      duration: 8,
+      ease: "power4.inOut",
+      stagger: 0.2,
+    }
+  );
+  tl.fromTo(
+    "#trending .product-info-area .button",
+    {
+      x: "40%",
+      opacity: 0,
+      duration: 8,
+      ease: "power4.inOut",
+    },
+    {
+      x: "0%",
+      opacity: 1,
+      duration: 8,
+      ease: "power4.inOut",
+      stagger: 0.2,
+    }
+  );
+}
+
+trendingAnimationScroll();
+
+function formAnimation() {
+  gsap.from("#form", {
+    scale: 0,
+    opacity: 0,
+    duration: 0.5,
+    ease: "power4.inOut",
+    scrollTrigger: {
+      trigger: "#form",
+      start: "top 90%",
+      end: "top 40%",
+      scroller: "#main",
+      scrub: true,
+    },
+  });
+}
+
+formAnimation();
