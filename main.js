@@ -39,6 +39,15 @@ ScrollTrigger.refresh()
 
 locoScroll.on('scroll', (instance) => {
   document.documentElement.setAttribute('data-direction', instance.direction)
+  const footer = document.getElementById('footer')
+  const footerRect = footer.getBoundingClientRect()
+  const footerVisible =
+    footerRect.top < window.innerHeight && footerRect.bottom > 0
+
+  if (footerVisible)
+    document.documentElement.setAttribute('data-direction', 'up')
+  else
+    document.documentElement.setAttribute('data-direction', instance.direction)
 })
 function loaderAnimation() {
   const tl = gsap.timeline({
@@ -234,22 +243,6 @@ function PhoneNavbar() {
   })
 }
 
-function navbarAnimation() {
-  var lastScrollY = 0
-  const navbar = document.getElementById('navbar')
-  window.addEventListener('scroll', function () {
-    var currentScrollY = window.scrollY
-    if (currentScrollY > lastScrollY) {
-      console.log('Scroll Down')
-      // navbar.style.top = '80px'
-    } else {
-      console.log('Scroll Up')
-      // navbar.style.top = '0'
-    }
-    lastScrollTop = scrollTop
-  })
-}
-
 function featuresAnimation() {
   const featuredProducts = [
     {
@@ -329,7 +322,7 @@ function featuresAnimation() {
             },
             {
               title: 'Ice Lilac',
-              qualityImg: '/featured-Products/qualityimg2.svg',
+              qualityImg: '/features/g64-3.png',
             },
           ],
           price: 69999,
@@ -568,6 +561,7 @@ function newCursor() {
     if (target.localName !== 'html') {
       if (
         target.localName === 'a' ||
+        target.localName === 'button' ||
         target.dataset.cursor === 'false' ||
         target.parentNode.dataset.cursor === 'false'
       ) {
@@ -609,15 +603,16 @@ function cardsAnimation() {
     scrollTrigger: {
       trigger: '#cards',
       scroller: '#main',
-      start: 'top 40%',
-      end: 'bottom top',
+      start: 'top 10%',
+      end: 'top -400%',
+      markers: true,
       scrub: true,
       pin: true,
     },
   })
 
   tl.from('#cards .cards-container .card-left', {
-    duration: 2,
+    duration: 25,
     opacity: 0,
     motionPath: {
       path: [
@@ -627,12 +622,13 @@ function cardsAnimation() {
       curviness: 2,
       autoRotate: false,
     },
-    ease: 'power2.out',
+    stagger: 1,
+    ease: 'power4.inOut',
   })
   tl.from(
     '#cards .cards-container .card-right',
     {
-      duration: 2,
+      duration: 25,
       opacity: 0,
       motionPath: {
         path: [
@@ -642,37 +638,52 @@ function cardsAnimation() {
         curviness: 2,
         autoRotate: false,
       },
-      ease: 'power2.out',
+      stagger: 1,
+      ease: 'power4.inOut',
     },
-    '-=2.1'
+    '-=5.1'
   )
-  tl.to(
-    '.card-right img:nth-child(1)',
-    {
-      x: 100,
-      y: 100,
-      opacity: 0,
-    },
-    '+=2.5'
-  )
+  tl.to('.card-right img:nth-child(1)', {
+    x: 100,
+    y: 100,
+    opacity: 0,
+    duration: 25,
+    ease: 'power4.inOut',
+  })
   tl.to('.card-right img:nth-child(2)', {
-    x: '-10%',
-    y: '20',
+    x: '-20%',
+    y: '20%',
     opacity: 1,
     filter: 'blur(0px)',
+    duration: 25,
+    ease: 'power4.inOut',
+  })
+  tl.to('.card-right img:nth-child(2)', {
+    x: 100,
+    y: 100,
+    opacity: 0,
+    duration: 25,
+    ease: 'power4.inOut',
   })
   tl.to(
-    '.card-right img:nth-child(2)',
+    '#cards .cards-container .card-left',
     {
-      x: 100,
-      y: 100,
+      duration: 25,
       opacity: 0,
+      motionPath: {
+        path: [
+          { x: 0, y: 0 },
+          { x: -100, y: window.innerHeight },
+        ],
+        curviness: 2,
+        autoRotate: false,
+      },
+      ease: 'power4.inOut',
     },
-    '+=2.5'
+    '+=2'
   )
 }
 
-// Trending Animation
 function trendingAnimation() {
   gsap.to('#circular-slider-area', {
     rotate: 0,
@@ -732,39 +743,17 @@ function updateProductInfo(index) {
       title: 'motorola g64',
       imgSrc: '/featured-Products/g64.png',
     },
-    // {
-    //   title: 'motorola edge 50 ultra',
-    //   imgSrc: '/featured-Products/50-ultra.png',
-    // },
-    // {
-    //   title: 'motorola razr 40 ultra',
-    //   imgSrc: '/featured-Products/razr-40-ultra.png',
-    // },
-    // {
-    //   title: 'motorola razr 40',
-    //   imgSrc: '/featured-Products/razr-40.png',
-    // },
-    // {
-    //   title: 'motorola G34',
-    //   imgSrc: '/featured-Products/g34.png',
-    // },
   ]
 
   const selectedProduct = products[index]
   const productTitle = document.querySelector('.product-title')
   const productImg = document.querySelector('.product-img-wrapper img')
-  const hologramLight = document.querySelector('.hologram-light')
 
   productTitle.textContent = selectedProduct.title
-
-  // Reset image source to trigger reload
   productImg.src = ''
   productImg.src = selectedProduct.imgSrc
-
-  hologramLight.style.animation = 'none'
   productImg.style.opacity = 0
   requestAnimationFrame(() => {
-    hologramLight.style.animation = 'hologram 1s ease-in-out forwards'
     productImg.style.transition =
       'opacity 0.5s ease-in-out, transform 0.5s ease-in-out'
     productImg.style.opacity = 1
@@ -775,7 +764,6 @@ function updateProductInfo(index) {
     () => {
       productImg.style.transform = 'scale(0)'
       requestAnimationFrame(() => {
-        hologramLight.style.animation = 'hologram 1s ease-in-out forwards'
         productImg.style.transform = 'scale(1)'
       })
     },
