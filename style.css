@@ -362,21 +362,21 @@ body {
   text-decoration: none;
   padding: 15px 25px;
   border: 2px solid whitesmoke;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
   transition: 0.5s;
   background: transparent;
-  clip-path: polygon(100% 0, 100% 60%, 15% 100%, 100% 100%, 0 60%, 0% 0%);
   animation: backgroundAnimation 8s ease-in-out infinite;
   transition: 0.5s;
   opacity: 0;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 
 #landing-section .content a:hover {
-  background: radial-gradient(circle at 50%, #062645, #00dfd88e);
-  clip-path: polygon(78% 0, 100% 47%, 100% 100%, 22% 100%, 0 47%, 0% 0%);
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  background: radial-gradient(circle at 50%, #0757a7, #00dfd88e);
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .after-loader {
@@ -521,24 +521,25 @@ button {
   width: -moz-fit-content;
   width: fit-content;
   color: white;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   cursor: pointer;
   margin: 0 5px;
   font-size: 16px;
   border: 2px solid whitesmoke;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   transition: 0.5s;
   background: transparent;
-  clip-path: polygon(100% 0, 100% 60%, 15% 100%, 100% 100%, 0 60%, 0% 0%);
   animation: backgroundAnimation 8s ease-in-out infinite;
 }
 
 button:hover {
-  background: radial-gradient(circle at 50%, #062645, #00dfd88e);
-  clip-path: polygon(78% 0, 100% 47%, 100% 100%, 22% 100%, 0 47%, 0% 0%);
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  background: radial-gradient(circle at 50%, #0757a7, #00dfd88e);
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  font-weight: 600;
 }
 
 @keyframes backgroundAnimation {
@@ -561,7 +562,14 @@ button:disabled {
   gap: 1rem;
   overflow: hidden;
   height: 450px;
+}
+
+.features-right .product-box {
   width: 50%;
+}
+
+.product-img-container .product-box {
+  width: 100%;
 }
 
 .about-product {
@@ -654,11 +662,11 @@ button:disabled {
 
 #banner {
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   text-align: center;
-  overflow: visible;
+  overflow: hidden;
   position: relative;
-  margin: 20vw 0;
+  margin: 5rem 0;
 }
 
 #banner .slider {
@@ -702,7 +710,6 @@ button:disabled {
   transform: translate(-50%, -50%);
   width: min(1400px, 100vw);
   height: max-content;
-  padding-bottom: 150px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -711,9 +718,21 @@ button:disabled {
 }
 
 #banner .content h1 {
+  background: radial-gradient(ellipse at top, rgb(251, 255, 0), transparent),
+    linear-gradient(to bottom, #38fcfd, transparent);
+  color: transparent;
+  -webkit-background-clip: text;
   font-size: 10em;
   line-height: 1em;
   position: relative;
+  text-shadow: 0 0 60px #38fdfd47;
+  animation: headingAnimation 1s infinite alternate;
+}
+
+@keyframes headingAnimation {
+  100% {
+    text-shadow: 0 0 60px rgba(56, 253, 253, 0.400);
+  }
 }
 
 #banner .content .author {
@@ -732,34 +751,49 @@ button:disabled {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
+  padding: 5rem 0;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   text-align: center;
 }
 
 .wrapper {
   overflow: hidden;
   width: 100%;
-  height: 100vh;
-  /* background-color: brown; */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   position: relative;
   justify-content: flex-end;
 }
 
+#trending h1,
+#cards h1,
+#features h1,
+#form h1 {
+  background: radial-gradient(ellipse at top, rgb(251, 255, 0), transparent),
+    linear-gradient(to bottom, #38fcfd, transparent);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 60px #38fdfd47;
+  animation: headingAnimation 1s infinite alternate;
+}
+
 #circular-slider-area {
   position: absolute;
   width: 100vh;
-  min-height: 100vh;
+  height: 100vh;
   border-radius: 50%;
   transform: translate(0, -50%) rotate(100deg);
   left: -60vh;
   top: 50%;
-  border: 1px dotted #f1f1f15f;
+  background-image: url("/featured-Products/gear-2.jpg");
+  background-repeat: no-repeat;
+  background-size: 105%;
+  background-position: 2rem -1.5rem;
 }
 
 .stripes {
@@ -874,7 +908,7 @@ h1 {
 }
 
 .hologram-projector {
-  width: 60%;
+  /* width: 60%;
   height: 40px;
   border: 2px solid rgba(0, 255, 255, 0.5);
   border-radius: 100%;
@@ -885,7 +919,15 @@ h1 {
     rgba(0, 0, 0, 0.06) 0px 2px 1px 0px, rgba(0, 255, 255, 0.5) 0px 4px 2px 0px,
     rgba(0, 255, 255, 0.5) 0px 8px 4px 0px,
     rgba(0, 255, 255, 0.5) 0px 16px 8px 0px,
-    rgba(0, 0, 0, 0.09) 0px 32px 16px 0px;
+    rgba(0, 0, 0, 0.09) 0px 32px 16px 0px; */
+  width: 100%;
+  height: 100px;
+}
+
+.hologram-projector img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 
@@ -1095,21 +1137,20 @@ h1 {
   border: 1px solid #000;
   border: 2px solid white;
   padding: 10px 25px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
   transition: 0.5s;
   background: transparent;
   animation: backgroundAnimation 8s ease-in-out infinite;
-  clip-path: polygon(100% 0, 100% 60%, 15% 100%, 100% 100%, 0 60%, 0% 0%);
 }
 
 #form .box form .links a:hover {
-  clip-path: polygon(78% 0, 100% 47%, 100% 100%, 22% 100%, 0 47%, 0% 0%);
-  background: radial-gradient(circle at 50%, #062645, #00dfd88e);
-
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
   color: whitesmoke;
+  background: radial-gradient(circle at 50%, #0757a7, #00dfd88e);
 }
 
 #footer {
@@ -1302,7 +1343,7 @@ h1 {
 
 #cards {
   width: 100%;
-  min-height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   position: relative;
@@ -1410,22 +1451,61 @@ h1 {
 }
 
 @media screen and (max-width: 1024px) {
-  .wrapper {
+  #features .wrapper {
     flex-direction: column;
+  }
+
+  #circular-slider-area {
+    width: 90vh;
   }
 }
 
 @media (max-width: 850px) {
+  #banner .slider {
+    top: 20%;
+  }
+
+  #banner .content h1 {
+    font-size: 2.5rem;
+  }
+
   .features-right {
     flex-direction: column;
   }
 
-  .product-box {
+  .features-right .product-box,
+  .product-img-container .product-box {
     width: 100%;
   }
 
   .buttons-container {
     justify-content: center;
+  }
+
+  #trending {
+    height: 120vh;
+  }
+
+  #circular-slider-area {
+    display: none;
+  }
+
+  .product-info-area .product-title {
+    width: 100%;
+  }
+
+  .product-info-area {
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 5rem;
+  }
+
+  .product-img-container {
+    height: auto;
+  }
+
+  .product-box {
+    height: 350px;
   }
 
   .header-big-screen {
@@ -1496,6 +1576,7 @@ h1 {
   .header-row {
     padding: 25px;
   }
+
 
   #form .box form h2 {
     font-size: 1.5rem;
