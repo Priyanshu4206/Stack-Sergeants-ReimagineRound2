@@ -512,7 +512,7 @@ function featuresAnimation() {
         renderAboutDetails(currentIndex, currentProductIndex)
         slideHeadings() // Update headings after changing featured product
       }
-    }, 3000) // Change every 3 seconds
+    }, 6000) // Change every 3 seconds
   }
 
   function stopAutoSlide() {
@@ -531,12 +531,69 @@ function featuresAnimation() {
     startAutoSlide()
   })
 
-  // Initial render
   renderFeatures()
   renderProducts(currentIndex, currentProductIndex)
   renderAboutDetails(currentIndex, currentProductIndex)
   updateButtons()
   startAutoSlide()
+
+  const featuresTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#features',
+      start: 'top 75%',
+      end: 'top 25%',
+      scroller: '#main',
+      scrub: true,
+    },
+  })
+
+  featuresTimeline
+    .from('.features-box', {
+      opacity: 0,
+      y: '100%',
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+    .from(
+      '.product-box',
+      {
+        opacity: 0,
+        y: '100%',
+        duration: 0.5,
+        ease: 'power2.out',
+      },
+      '<'
+    )
+    .from(
+      '.about-product',
+      {
+        opacity: 0,
+        y: '100%',
+        duration: 0.5,
+        ease: 'power2.out',
+      },
+      '<'
+    )
+}
+
+function bannerAnamtion() {
+  const bannerTimeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#banner',
+      start: 'top 55%',
+      end: 'top 15%',
+      scroller: '#main',
+      scrub: true,
+    },
+  })
+  bannerTimeline
+    .from('.content h1', {
+      opacity: 0,
+      scale: 1,
+      y:'60%',
+      duration: 1,
+      ease: 'power4.inOut',
+    })
 }
 
 function newCursor() {
@@ -605,7 +662,6 @@ function cardsAnimation() {
       scroller: '#main',
       start: 'top 10%',
       end: 'top -400%',
-      markers: true,
       scrub: true,
       pin: true,
     },
@@ -842,64 +898,10 @@ stripes.forEach((stripe, index) => {
   }
 })
 
-// function productsSectionAnimation() {
-//   window.addEventListener('load', function () {
-//     const slides = gsap.utils.toArray('.slide')
-//     const activeSlideImages = gsap.utils.toArray('.active-slide img')
-
-//     function getInitialTranslateZ(slide) {
-//       const style = window.getComputedStyle(slide)
-//       const matrix = style.transform.match(/matrix3d\((.+)\)/)
-//       if (matrix) {
-//         const values = matrix[1].split(', ')
-//         return parseFloat(values[14] || 0)
-//       }
-//       return 0
-//     }
-//     function mapRange(value, inMin, inMax, outMin, outMax) {
-//       return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
-//     }
-
-//     slides.forEach((slide, index) => {
-//       const initialZ = getInitialTranslateZ(slide)
-//       ScrollTrigger.create({
-//         trigger: '#products-section',
-//         scroller: '#main',
-//         start: 'top top',
-//         end: 'bottom bottom',
-//         scrub: true,
-//         onUpdate: (self) => {
-//           const progress = self.progress
-//           const zIncrement = progress * 22500
-//           const currentZ = initialZ + zIncrement
-//           let opacity = 0
-//           if (currentZ > -2500) {
-//             opacity = mapRange(currentZ, -2500, 0, 0.5, 1)
-//           } else {
-//             opacity = mapRange(currentZ, -5000, -2500, 0, 0.5)
-//           }
-//           slide.style.opacity
-//           slide.style.transform = `translateX(-50%) translateY(-50%) translateZ(${currentZ}px)`
-//           if (currentZ < 100) {
-//             gsap.to(activeSlideImages[index], 1.5, {
-//               opacity: 1,
-//               ease: 'power3.out',
-//             })
-//           } else {
-//             gsap.to(activeSlideImages[index], 1.5, {
-//               opacity: 0,
-//               ease: 'power3.out',
-//             })
-//           }
-//         },
-//       })
-//     })
-//   })
-// }
 document.addEventListener('DOMContentLoaded', () => {
   loaderAnimation()
   featuresAnimation()
-  // productsSectionAnimation()
+  bannerAnamtion()
   PhoneNavbar()
   newCursor()
   cardsAnimation()
