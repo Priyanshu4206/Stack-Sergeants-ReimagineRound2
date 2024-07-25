@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "gsap": "^3.12.5",
+    "gsap-drawsvg": "^1.0.0",
     "locomotive-scroll": "^4.1.4",
     "remixicon": "^4.3.0"
   }

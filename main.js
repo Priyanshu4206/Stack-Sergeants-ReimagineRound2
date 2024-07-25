@@ -9,10 +9,10 @@ import { Draggable } from 'gsap/all'
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(MotionPathPlugin)
 gsap.registerPlugin(Draggable)
-
 const locoScroll = new LocomotiveScroll({
   el: document.querySelector('#main'),
   smooth: true,
+  getDirection: true,
 })
 locoScroll.on('scroll', ScrollTrigger.update)
 
@@ -37,6 +37,9 @@ ScrollTrigger.scrollerProxy('#main', {
 ScrollTrigger.addEventListener('refresh', () => locoScroll.update())
 ScrollTrigger.refresh()
 
+locoScroll.on('scroll', (instance) => {
+  document.documentElement.setAttribute('data-direction', instance.direction)
+})
 function loaderAnimation() {
   const tl = gsap.timeline({
     onComplete: landingPageAnimation,
@@ -228,6 +231,22 @@ function PhoneNavbar() {
   menuToggle.addEventListener('click', function () {
     menuBar.reversed(!menuBar.reversed())
     navTl.reversed(!navTl.reversed())
+  })
+}
+
+function navbarAnimation() {
+  var lastScrollY = 0
+  const navbar = document.getElementById('navbar')
+  window.addEventListener('scroll', function () {
+    var currentScrollY = window.scrollY
+    if (currentScrollY > lastScrollY) {
+      console.log('Scroll Down')
+      // navbar.style.top = '80px'
+    } else {
+      console.log('Scroll Up')
+      // navbar.style.top = '0'
+    }
+    lastScrollTop = scrollTop
   })
 }
 
@@ -835,12 +854,68 @@ stripes.forEach((stripe, index) => {
   }
 })
 
+// function productsSectionAnimation() {
+//   window.addEventListener('load', function () {
+//     const slides = gsap.utils.toArray('.slide')
+//     const activeSlideImages = gsap.utils.toArray('.active-slide img')
+
+//     function getInitialTranslateZ(slide) {
+//       const style = window.getComputedStyle(slide)
+//       const matrix = style.transform.match(/matrix3d\((.+)\)/)
+//       if (matrix) {
+//         const values = matrix[1].split(', ')
+//         return parseFloat(values[14] || 0)
+//       }
+//       return 0
+//     }
+//     function mapRange(value, inMin, inMax, outMin, outMax) {
+//       return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
+//     }
+
+//     slides.forEach((slide, index) => {
+//       const initialZ = getInitialTranslateZ(slide)
+//       ScrollTrigger.create({
+//         trigger: '#products-section',
+//         scroller: '#main',
+//         start: 'top top',
+//         end: 'bottom bottom',
+//         scrub: true,
+//         onUpdate: (self) => {
+//           const progress = self.progress
+//           const zIncrement = progress * 22500
+//           const currentZ = initialZ + zIncrement
+//           let opacity = 0
+//           if (currentZ > -2500) {
+//             opacity = mapRange(currentZ, -2500, 0, 0.5, 1)
+//           } else {
+//             opacity = mapRange(currentZ, -5000, -2500, 0, 0.5)
+//           }
+//           slide.style.opacity
+//           slide.style.transform = `translateX(-50%) translateY(-50%) translateZ(${currentZ}px)`
+//           if (currentZ < 100) {
+//             gsap.to(activeSlideImages[index], 1.5, {
+//               opacity: 1,
+//               ease: 'power3.out',
+//             })
+//           } else {
+//             gsap.to(activeSlideImages[index], 1.5, {
+//               opacity: 0,
+//               ease: 'power3.out',
+//             })
+//           }
+//         },
+//       })
+//     })
+//   })
+// }
 document.addEventListener('DOMContentLoaded', () => {
   loaderAnimation()
   featuresAnimation()
+  // productsSectionAnimation()
   PhoneNavbar()
   newCursor()
   cardsAnimation()
   trendingAnimation()
-  initializeSlider()
+
+  // initializeSlider()
 })
